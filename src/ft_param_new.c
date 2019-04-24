@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_param_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 15:58:18 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/24 15:47:45 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/24 16:17:35 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-void		ft_printf(char *str, ...)
+void				ft_param_nul(t_param *param)
 {
-	va_list		ap;
-	t_param		*list;
+	int		iter;
 
-	va_start(ap, str);
-	list = ft_param_new();
-	while (*str)
-	{
-		if (*str == '%')
-			str = ft_percent(ap, str + 1, list);
-		else
-			ft_putchar(*str);
-		str++;
-	}
-	free(list);
-	va_end(ap);
+	param->subtl = -1;
+	param->width = 0;
+	iter = 0;
+	while (iter < 5)
+		param->flags[iter++] = 0;
+}
+
+t_param				*ft_param_new(void)
+{
+	t_param *new;
+
+	if (!(new = (t_param *)malloc(sizeof(t_param))))
+		return (NULL);
+	ft_param_nul(new);
+	return (new);
 }

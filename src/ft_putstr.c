@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 15:58:18 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/06 11:37:58 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/24 14:46:35 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-void		ft_printf(char *str, ...)
+void	ft_putstr(char const *s)
 {
-	va_list		ap;
-	t_param		*list;
-
-	va_start(ap, str);
-	list = ft_param_new();
-	while (*str)
+	if (s == NULL)
+		return ;
+	while (*s)
 	{
-		if (*str == '%')
-			str = ft_percent(ap, str + 1, list);
-		else
-			ft_putchar(*str);
-		str++;
+		ft_putchar((char)*s);
+		s++;
 	}
-	free(list);
-	va_end(ap);
 }
