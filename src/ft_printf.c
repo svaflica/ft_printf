@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 11:22:47 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/25 18:56:12 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int		ft_printf(char *str, ...)
 		}
 		else
 		{
-			// if (tmp > str)
-			// 	size += ft_putnstr(str, tmp - str);
+			if (tmp > str)
+				size += ft_putnstr(str, tmp - str);
 			str = tmp + 1;
 			if (*str == '\0')
 				return (size);
@@ -43,4 +43,5 @@ int		ft_printf(char *str, ...)
 		str++;
 	}
 	va_end(ap);
+	return (size);
 }

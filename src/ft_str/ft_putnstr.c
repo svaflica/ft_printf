@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 10:52:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 17:18:05 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/04/25 13:57:38 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 17:17:49 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-int	ft_c(t_param list, int c)
+int		ft_putnstr(char *str, int size)
 {
-	int size;
+	int i;
 
-	size = 0;
-	if (list.minus == 0 && list.width > 1)
-		size += ft_print_symb(' ', list.width - 1);
-	ft_putchar(c);
-	if (list.minus == 1 && list.width > 1)
-		size += ft_print_symb(' ', list.width - 1);
+	i = 0;
+	while (*str && i < size)
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
 	return (size);
 }

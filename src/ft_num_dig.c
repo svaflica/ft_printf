@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_symb.c                                    :+:      :+:    :+:   */
+/*   ft_num_dig.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 11:13:50 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 17:24:49 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/04/25 14:53:32 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 15:13:31 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_printf.h"
-
-int		ft_print_symb(int c, int size)
+int		ft_num_dig(int n, int base)
 {
-	int	tmp;
+	int res;
 
-	tmp = size;
-	while (size--)
-		ft_putchar(c);
-	return (tmp);
+	res = 0;
+	while (n)
+	{
+		res++;
+		n /= base;
+	}
+	return (res);
 }
