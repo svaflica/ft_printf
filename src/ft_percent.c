@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 11:23:50 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/25 13:44:12 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static int		ft_type(va_list ap, char **str, t_param list)
 {
 	if (**str == 'c')
 		return (ft_c(list, va_arg(ap, int)));
-	/*else if (**str == 's')
+	else if (**str == 's')
 		return (ft_s(list, va_arg(ap, char *)));
-	else if (**str == 'p')
-		return (ft_p(list, va_arg(ap, void *)));
-*/
+//	else if (**str == 'p')
+//		return (ft_p(list, va_arg(ap, void *)));
+
 	return (-1);
 }
 
