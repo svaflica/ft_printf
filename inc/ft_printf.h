@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 13:53:15 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/25 15:57:13 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,16 @@ size_t				ft_percent(va_list ap, char **str, t_param list);
 void				ft_putnbr(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
+int					ft_putnstr(char *str, int size);
 size_t				ft_strlen(const char *s);
-int     			ft_print_symb(int c, int size);
+int					ft_print_symb(int c, int size);
+int					ft_num_dig(int n, int base);
 
-int         		ft_c(t_param list, int c);
+int					ft_c(t_param list, int c);
+int					ft_s(t_param list, char *s);
+int					ft_p(t_param list, void *ptr);
+int					ft_d(t_param list, int i);
+int					ft_u(t_param list, unsigned int i);
 
 char				*ft_strchr(const char *s, int c);
 

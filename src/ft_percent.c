@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 13:44:12 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:57:55 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ static int		ft_type(va_list ap, char **str, t_param list)
 		return (ft_c(list, va_arg(ap, int)));
 	else if (**str == 's')
 		return (ft_s(list, va_arg(ap, char *)));
-//	else if (**str == 'p')
-//		return (ft_p(list, va_arg(ap, void *)));
-
-	return (-1);
+	else if (**str == 'p')
+		return (ft_p(list, va_arg(ap, void *)));
+	else if (**str == 'd' || **str == 'i')
+		return (ft_d(list, va_arg(ap, int)));
+	else if (**str == 'u')
+		return (ft_d(list, va_arg(ap, unsigned int)));
+	return (0);
 }
 
 size_t			ft_percent(va_list ap, char **str, t_param list)

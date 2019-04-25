@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_num_dig.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 10:52:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 15:49:26 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/25 14:53:32 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 15:13:31 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_printf.h"
-
-int	ft_c(t_param list, int c)
+int		ft_num_dig(int n, int base)
 {
-	int size;
+	int res;
 
-	size = 0;
-    if (list.minus == 0 && list.width > 1)
-		size += ft_print_symb(' ', list.width - 1);
-	ft_putchar(c);
-	if (list.minus == 1 && list.width > 1)
-		size += ft_print_symb(' ', list.width - 1);
-	return (size);
+	res = 0;
+	while (n)
+	{
+		res++;
+		n /= base;
+	}
+	return (res);
 }

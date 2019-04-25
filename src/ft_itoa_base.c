@@ -6,24 +6,11 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:19:47 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 13:52:55 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/25 15:14:13 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
-
-static int		num_dig(int n, int base)
-{
-	int res;
-
-	res = 0;
-	while (n)
-	{
-		res++;
-		n /= base;
-	}
-	return (res);
-}
 
 static void		turn_into_char(char *res, int n, int base, int num_d)
 {
@@ -53,7 +40,7 @@ char			*ft_itoa_base(int n, int base)
 		res = ft_itoa(n);
 	else
 	{
-		num_d = num_dig(n, base);
+		num_d = ft_num_dig(n, base);
 		if (!(res = (char *)malloc(sizeof(char) * (num_d + 1))))
 			return (NULL);
 		turn_into_char(res, n, base, num_d);
