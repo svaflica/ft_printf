@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 10:54:49 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 15:15:19 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/06 11:37:58 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 08:45:21 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putstr(char const *s)
 {
-	while (*s != (char)c && *s)
+	if (s == NULL)
+		return ;
+	while (*s)
+	{
+		ft_putchar((char)*s);
 		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+	}
 }

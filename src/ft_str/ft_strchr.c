@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 11:25:20 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/05 10:54:49 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 08:45:24 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/ft_printf.h"
-#include <stdio.h>
-int main(void)
+#include "../../inc/ft_printf.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	ft_printf("%-2c^\n", 'a');
+	while (*s != (char)c && *s)
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

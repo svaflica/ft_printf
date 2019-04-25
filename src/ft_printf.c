@@ -6,27 +6,41 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 15:58:18 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/25 11:22:47 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-void		ft_printf(char *str, ...)
+int		ft_printf(char *str, ...)
 {
 	va_list		ap;
-	t_param		*list;
+	size_t		size;
+	char		*tmp;
+	t_param		list;
 
 	va_start(ap, str);
-	list = ft_param_new();
+	size = 0;
+	ft_param_nul(&list);
 	while (*str)
 	{
-		if (*str == '%')
-			str = ft_percent(ap, str + 1, list);
+		tmp = ft_strchr(str, '%');
+		if (tmp == NULL)
+		{
+			ft_putstr(str);
+			return (size + ft_strlen(str));
+		}
 		else
-			ft_putchar(*str);
+		{
+			// if (tmp > str)
+			// 	size += ft_putnstr(str, tmp - str);
+			str = tmp + 1;
+			if (*str == '\0')
+				return (size);
+			else
+				size += ft_percent(ap, &str, list);
+		}
 		str++;
 	}
-	free(list);
 	va_end(ap);
 }

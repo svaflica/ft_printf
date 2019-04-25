@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_param_new.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 15:47:45 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 16:17:35 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/24 09:32:03 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 08:45:17 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
-void				ft_param_nul(t_param *param)
+void		ft_putnbr(int n)
 {
-	int		iter;
-
-	param->subtl = -1;
-	param->width = 0;
-	iter = 0;
-	while (iter < 5)
-		param->flags[iter++] = 0;
-}
-
-t_param				*ft_param_new(void)
-{
-	t_param *new;
-
-	if (!(new = (t_param *)malloc(sizeof(t_param))))
-		return (NULL);
-	ft_param_nul(new);
-	return (new);
+	ft_putstr(ft_itoa(n));
 }

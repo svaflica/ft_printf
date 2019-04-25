@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 09:34:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 14:46:51 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/03 10:49:31 by djeanna           #+#    #+#             */
+/*   Updated: 2019/04/25 08:45:30 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
-void		ft_putchar(char c)
+size_t	ft_strlen(const char *s)
 {
-	write(1, &c, 1);
+	int res;
+
+	res = 0;
+	if (s)
+		while (*s)
+		{
+			s++;
+			res++;
+		}
+	return (res);
 }
