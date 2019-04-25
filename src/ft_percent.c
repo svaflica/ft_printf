@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 13:44:12 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/25 14:59:03 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int		ft_type(va_list ap, char **str, t_param list)
 		return (ft_c(list, va_arg(ap, int)));
 	else if (**str == 's')
 		return (ft_s(list, va_arg(ap, char *)));
+	else if (**str == 'o')
+		return (ft_o(list, va_arg(ap, unsigned int)));
 //	else if (**str == 'p')
 //		return (ft_p(list, va_arg(ap, void *)));
 
