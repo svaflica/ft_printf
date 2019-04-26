@@ -6,18 +6,18 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 11:13:50 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 13:19:16 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/25 17:24:49 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-int     ft_print_symb(int c, int size)
+int		ft_print_symb(int c, int size)
 {
-    int tmp;
+	int	tmp;
 
-    tmp = size;
-    while (size--)
-        ft_putchar(c);
-    return (tmp);
+	tmp = size;
+	while (size--)
+		ft_putchar(c);
+	return (tmp);
 }

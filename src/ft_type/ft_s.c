@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 12:30:23 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/25 13:38:43 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/25 17:54:08 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_s(t_param list, char *s)
 {
-	size_t	tmp;
-	int		size;
+	int	tmp;
+	int	size;
 
 	size = 0;
 	tmp = ft_strlen(s);

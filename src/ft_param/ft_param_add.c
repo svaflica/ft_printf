@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_param_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 11:20:47 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/25 17:28:14 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void		ft_flags(t_param *new, char **str)
 	(new->zero == 1 && new->minus == 1) ? new->zero = 0 : 1;
 }
 
-int			ft_param_add(t_param *new, char **str)
+int				ft_param_add(t_param *new, char **str)
 {
 	ft_flags(new, str);
 	new->width = ft_atoi(*str);
