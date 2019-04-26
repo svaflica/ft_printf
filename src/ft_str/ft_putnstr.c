@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 13:57:38 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 20:50:35 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/26 16:07:21 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int		ft_putnstr(char *str, int size)
 		ft_putchar(str[i]);
 		i++;
 	}
-	return (size);
+	return (i);
 }
