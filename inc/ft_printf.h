@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/26 09:19:21 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/26 13:11:07 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base);
 
+static void			prec_neg(int *size, char *str, t_param list, int tmp);
+static void			prec_pos(int *size, char *str, t_param list, int tmp);
 #endif
