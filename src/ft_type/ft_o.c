@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/26 13:18:29 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/27 14:03:18 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	prec_pos(int *size, char *str, t_param list, int tmp)
 		*size += ft_print_symb(' ', list.width - list.precision);
 }
 
-int			ft_o(t_param list, unsigned int i)
+static int			ft_type_o(t_param list, intmax_t i)
 {
 	int		size;
 	char	*str;
@@ -51,4 +51,19 @@ int			ft_o(t_param list, unsigned int i)
 		prec_pos(&size, str, list, tmp);
 	free(str);
 	return (size);
+}
+
+int				ft_o(t_param list, va_list ap)
+{
+	if (list.length == 0)
+		return (ft_type_o(list, (unsigned int)va_arg(ap, int)));
+	else if (list.length == 'l')
+		(ft_type_o(list, (unsigned long)va_arg(ap, int)));
+	else if (list.length == 'l' + 'l')
+		(ft_type_o(list, (unsigned long long)va_arg(ap, int)));
+	else if (list.length == 'h')
+		(ft_type_o(list, (unsigned short)va_arg(ap, int)));
+	else if (list.length == 'h' + 'h')
+		(ft_type_o(list, (unsigned char)va_arg(ap, int)));
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:19:47 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 15:14:13 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/27 13:16:20 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-static void		turn_into_char(char *res, int n, int base, int num_d)
+static void		turn_into_char(char *res, intmax_t n, int base, int num_d)
 {
 	char	*buf;
 	int		sign;
@@ -29,7 +29,7 @@ static void		turn_into_char(char *res, int n, int base, int num_d)
 	}
 }
 
-char			*ft_itoa_base(int n, int base)
+char			*ft_itoa_base(intmax_t n, int base)
 {
 	char	*res;
 	int		num_d;

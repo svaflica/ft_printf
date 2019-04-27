@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 21:12:28 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/27 14:01:50 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ static int		ft_type(va_list ap, char **str, t_param list)
 	else if (**str == 's')
 		return (ft_s(list, va_arg(ap, char *)));
 	else if (**str == 'o')
-		return (ft_o(list, va_arg(ap, unsigned int)));
+		return (ft_o(list, ap));
 	else if (**str == 'p')
 		return (ft_p(list, va_arg(ap, void *)));
-	else if (**str == 'd' || **str == 'i')
-		return (ft_d(list, va_arg(ap, int)));
 	else if (**str == 'u')
-		return (ft_d(list, va_arg(ap, unsigned int)));
+		return (ft_u(list, ap));
 	return (0);
 }
 
