@@ -6,13 +6,13 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:53:06 by ashari            #+#    #+#             */
-/*   Updated: 2019/04/26 09:19:58 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/27 13:16:01 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-void	ft_putnbr(long long int n)
+void	ft_putnbr(intmax_t n)
 {
 	if (n == (2147483648 * (-1)))
 	{

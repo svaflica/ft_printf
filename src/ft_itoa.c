@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 09:25:38 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/24 14:47:15 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/27 13:16:49 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	fill_arr(char *str, int n, int num_dig, int is_neg)
 	}
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(intmax_t n)
 {
 	char	*res;
 	int		num_dig;

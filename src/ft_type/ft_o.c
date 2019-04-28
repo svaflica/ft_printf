@@ -6,11 +6,12 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/26 14:07:19 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/28 14:04:03 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
+#include <stdio.h>
 
 static void	prec_neg(int *size, char *str, t_param list, int tmp)
 {
@@ -19,24 +20,29 @@ static void	prec_neg(int *size, char *str, t_param list, int tmp)
 	if (list.minus == 0 && list.zero == 1 && list.width - list.hasht > tmp)
 		*size = ft_print_symb('0', list.width - list.hasht - tmp);
 	*size += ft_print_symb('0', list.hasht);
-	*size += ft_strlen(str);
-	ft_putstr(str);
+	*size += ft_putnstr(str, ft_strlen(str));
 	if (list.minus == 1 && list.width - list.hasht > tmp)
 		*size += ft_print_symb(' ', list.width - list.hasht - tmp);
 }
 
 static void	prec_pos(int *size, char *str, t_param list, int tmp)
 {
+	if (*str == '0' && tmp == 1)
+		tmp = 0;
 	if (list.precision > tmp)
 		*size += ft_print_symb('0', list.precision - tmp - list.hasht);
 	*size += ft_print_symb('0', list.hasht);
-	list.precision != 0 ? *size += ft_strlen(str) : 0;
-	list.precision == 0 ? NULL : ft_putstr(str);
-	if (list.width > (list.precision + tmp))
+	if (list.precision < list.width && list.precision == 0 && tmp == 0)
+		*size += ft_print_symb(' ', list.width - tmp);
+	if (list.precision < list.width && list.precision < tmp)
+		ft_print_symb(' ', list.width - tmp);
+	if (tmp != 0)
+		*size += ft_putnstr(str, ft_strlen(str));
+	if (list.width > list.precision && list.minus == 1)
 		*size += ft_print_symb(' ', list.width - list.precision);
 }
 
-int			ft_o(t_param list, unsigned int i)
+static int			ft_type_o(t_param list, intmax_t i)
 {
 	int		size;
 	char	*str;
@@ -51,4 +57,19 @@ int			ft_o(t_param list, unsigned int i)
 		prec_pos(&size, str, list, tmp);
 	free(str);
 	return (size);
+}
+
+int				ft_o(t_param list, va_list ap)
+{
+	if (list.length == 0)
+		return (ft_type_o(list, (unsigned int)va_arg(ap, int)));
+	else if (list.length == 'l')
+		(ft_type_o(list, (unsigned long)va_arg(ap, int)));
+	else if (list.length == 'l' + 'l')
+		(ft_type_o(list, (unsigned long long)va_arg(ap, int)));
+	else if (list.length == 'h')
+		(ft_type_o(list, (unsigned short)va_arg(ap, int)));
+	else if (list.length == 'h' + 'h')
+		(ft_type_o(list, (unsigned char)va_arg(ap, int)));
+	return (0);
 }
