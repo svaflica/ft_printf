@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/27 18:45:46 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/28 16:14:54 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int		ft_type(va_list ap, char **str, t_param list)
 		return (ft_d(list, ap));
 	else if (**str == 'u')
 		return (ft_u(list, ap));
+	else if (**str == '%')
+		return (ft_prcnt(list));
 	return (0);
 }
 

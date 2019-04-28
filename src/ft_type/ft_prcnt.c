@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_prcnt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/28 16:22:48 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/04/28 16:15:49 by qclubfoo          #+#    #+#             */
+/*   Updated: 2019/04/28 16:31:21 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/ft_printf.h"
-#include <stdio.h>
-//gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c && ./a.out
+#include "../../inc/ft_printf.h"
 
-int main(void)
-
+int	ft_prcnt(t_param list)
 {
-	// printf("%d\n", ft_printf("%5.o %5.0o^\n", 0, 0));
-	// printf("%d\n", printf("%5.o %5.0o^\n", 0, 0));
+	int	size;
 
-	printf("%1%^\n");
+	size = 0;
+	if (list.width > 1 && list.minus == 0)
+		size += ft_print_symb(' ', list.width - 1);
+	size += 1;
+	ft_putchar('%');
+	if (list.width > 1 && list.minus == 1)
+		size += ft_print_symb(' ', list.width - 1);
+	return (size);
 }
