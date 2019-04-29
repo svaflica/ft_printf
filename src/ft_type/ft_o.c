@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_o.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/28 14:04:03 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/29 17:58:51 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	prec_pos(int *size, char *str, t_param list, int tmp)
 		*size += ft_print_symb(' ', list.width - list.precision);
 }
 
-static int			ft_type_o(t_param list, intmax_t i)
+static int			ft_type_o(t_param list, char *i)
 {
 	int		size;
 	char	*str;
@@ -62,14 +62,19 @@ static int			ft_type_o(t_param list, intmax_t i)
 int				ft_o(t_param list, va_list ap)
 {
 	if (list.length == 0)
-		return (ft_type_o(list, (unsigned int)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned int)va_arg(ap, int), 8)));
 	else if (list.length == 'l')
-		(ft_type_o(list, (unsigned long)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned long)va_arg(ap, int), 8)));
 	else if (list.length == 'l' + 'l')
-		(ft_type_o(list, (unsigned long long)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned long long)va_arg(ap, int), 8)));
 	else if (list.length == 'h')
-		(ft_type_o(list, (unsigned short)va_arg(ap, int)));
+		return ((ft_type_u(list,
+				ft_itoa_base((unsigned short)va_arg(ap, int), 8))));
 	else if (list.length == 'h' + 'h')
-		(ft_type_o(list, (unsigned char)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned char)va_arg(ap, int), 8)));
 	return (0);
 }

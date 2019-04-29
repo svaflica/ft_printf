@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/27 17:59:34 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/29 17:57:39 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	prec_pos(int *size, intmax_t i, t_param list, int tmp)
 		*size += ft_print_symb(' ', list.width - list.precision - tmp);
 }
 
-static int	ft_type_u(t_param list, intmax_t i)
+static int	ft_type_u(t_param list, char *i)
 {
 	int size;
 
@@ -51,14 +51,19 @@ static int	ft_type_u(t_param list, intmax_t i)
 int			ft_u(t_param list, va_list ap)
 {
 	if (list.length == 0)
-		return (ft_type_u(list, (unsigned int)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned int)va_arg(ap, int), 10)));
 	else if (list.length == 'l')
-		(ft_type_u(list, (unsigned long)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned long)va_arg(ap, int), 10)));
 	else if (list.length == 'l' + 'l')
-		(ft_type_u(list, (unsigned long long)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned long long)va_arg(ap, int), 10)));
 	else if (list.length == 'h')
-		(ft_type_u(list, (unsigned short)va_arg(ap, int)));
+		return ((ft_type_u(list,
+				ft_itoa_base((unsigned short)va_arg(ap, int), 10))));
 	else if (list.length == 'h' + 'h')
-		(ft_type_u(list, (unsigned char)va_arg(ap, int)));
+		return (ft_type_u(list,
+				ft_itoa_base((unsigned char)va_arg(ap, int), 10)));
 	return (0);
 }
