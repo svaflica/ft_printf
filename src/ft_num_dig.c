@@ -6,13 +6,13 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:53:32 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/27 16:50:31 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/29 17:39:38 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-int		ft_num_dig(intmax_t n, int base)
+int		ft_num_dig(long long n, int base)
 {
 	int res;
 

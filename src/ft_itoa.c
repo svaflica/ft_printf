@@ -6,13 +6,13 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 09:25:38 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/27 13:16:49 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/29 17:39:18 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-static int	num_of_digits(int nb)
+static int	num_of_digits(long long nb)
 {
 	int res;
 
@@ -25,7 +25,7 @@ static int	num_of_digits(int nb)
 	return (res);
 }
 
-static void	fill_arr(char *str, int n, int num_dig, int is_neg)
+static void	fill_arr(char *str, long long n, int num_dig, int is_neg)
 {
 	int sign;
 
@@ -42,7 +42,7 @@ static void	fill_arr(char *str, int n, int num_dig, int is_neg)
 	}
 }
 
-char		*ft_itoa(intmax_t n)
+char		*ft_itoa(long long n)
 {
 	char	*res;
 	int		num_dig;
