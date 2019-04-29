@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/29 17:58:51 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/29 18:39:25 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,36 +45,40 @@ static void	prec_pos(int *size, char *str, t_param list, int tmp)
 static int			ft_type_o(t_param list, char *i)
 {
 	int		size;
-	char	*str;
+	// char	*str;
 	int		tmp;
 
 	size = 0;
-	str = ft_itoa_base(i, 8);
-	tmp = ft_strlen(str);
+	// str = ft_itoa_base(i, 8);
+	// tmp = ft_strlen(str);
+	tmp = ft_strlen(i);
 	if (list.precision == -1)
-		prec_neg(&size, str, list, tmp);
+		// prec_neg(&size, str, list, tmp);
+		prec_neg(&size, i, list, tmp);
 	else
-		prec_pos(&size, str, list, tmp);
-	free(str);
+		// prec_pos(&size, str, list, tmp);
+		prec_pos(&size, i, list, tmp);
+	// free(str);
+	free(i);
 	return (size);
 }
 
 int				ft_o(t_param list, va_list ap)
 {
 	if (list.length == 0)
-		return (ft_type_u(list,
+		return (ft_type_o(list,
 				ft_itoa_base((unsigned int)va_arg(ap, int), 8)));
 	else if (list.length == 'l')
-		return (ft_type_u(list,
+		return (ft_type_o(list,
 				ft_itoa_base((unsigned long)va_arg(ap, int), 8)));
 	else if (list.length == 'l' + 'l')
-		return (ft_type_u(list,
+		return (ft_type_o(list,
 				ft_itoa_base((unsigned long long)va_arg(ap, int), 8)));
 	else if (list.length == 'h')
-		return ((ft_type_u(list,
+		return ((ft_type_o(list,
 				ft_itoa_base((unsigned short)va_arg(ap, int), 8))));
 	else if (list.length == 'h' + 'h')
-		return (ft_type_u(list,
+		return (ft_type_o(list,
 				ft_itoa_base((unsigned char)va_arg(ap, int), 8)));
 	return (0);
 }

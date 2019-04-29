@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/29 17:39:50 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/29 18:44:37 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ char				*ft_strchr(const char *s, int c);
 int					ft_atoi(const char *str);
 char				*ft_itoa(long long n);
 char				*ft_itoa_base(long long n, int base);
+char				*ft_itoa_base_ll(unsigned long long n, int base);
 
 #endif
