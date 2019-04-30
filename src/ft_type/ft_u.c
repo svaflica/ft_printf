@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/29 18:45:05 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:35:02 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,18 @@ int			ft_u(t_param list, va_list ap)
 {
 	if (list.length == 0)
 		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned int)va_arg(ap, int), 10)));
+				ft_itoa_base_ll((unsigned)va_arg(ap, unsigned), 10)));
 	else if (list.length == 'l')
 		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned long)va_arg(ap, int), 10)));
+				ft_itoa_base_ll(va_arg(ap, unsigned long), 10)));
 	else if (list.length == 'l' + 'l')
 		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned long long)va_arg(ap, int), 10)));
+	ft_itoa_base_ll((unsigned long long)va_arg(ap, unsigned long long), 10)));
 	else if (list.length == 'h')
 		return ((ft_type_u(list,
-				ft_itoa_base_ll((unsigned short)va_arg(ap, int), 10))));
+				ft_itoa_base_ll((unsigned short)va_arg(ap, unsigned), 10))));
 	else if (list.length == 'h' + 'h')
 		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned char)va_arg(ap, int), 10)));
+				ft_itoa_base_ll((unsigned char)va_arg(ap, unsigned), 10)));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/29 20:03:49 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 11:21:00 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	minus_pos(int *size, char *i, t_param list, int tmp)
 				(list.precision > tmp_2 ? list.precision : tmp_2));
 	if (list.width > list.precision && list.width > tmp)
 		*size += ft_print_symb(' ', list.width - list.space - list.plus
-				- (list.precision > tmp_2 ? list.precision + (tmp != tmp_2): tmp));
+			- (list.precision > tmp_2 ? list.precision + (tmp != tmp_2): tmp));
 }
 
 static void	prec_neg(int *size, char *i, t_param list, int tmp)
