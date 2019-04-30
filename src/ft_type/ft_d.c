@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 16:41:42 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 17:26:21 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	minus_pos(int *size, char *i, t_param list, int tmp)
 		*size += ft_print_symb('0', list.width - list.space - list.plus -
 				(list.precision > tmp_2 ? list.precision : tmp_2));
 	if (list.width > list.precision && list.width > tmp)
-		*size += ft_print_symb(' ', list.width - list.space - list.plus
-				- (list.precision > tmp_2 ? list.precision + (tmp != tmp_2): tmp));
+		*size += ft_print_symb(' ', list.width - list.space - list.plus -
+			(list.precision > tmp_2 ? list.precision + (tmp != tmp_2) : tmp));
 }
 
 static void	prec_neg(int *size, char *i, t_param list, int tmp)
@@ -71,13 +71,9 @@ static void	prec_pos(int *size, char *i, t_param list, int tmp)
 		if (list.width > list.precision && list.width > tmp)
 			*size += ft_print_symb(' ', list.width - list.space - (list.plus ||
 				*i == '-') - (list.precision > tmp_2 ? list.precision : tmp));
-		if (list.plus == 1 && *i != '-')
-			*size += ft_print_symb('+', 1);
-		if (*i == '-')
-		{
-			ft_putchar(*i);
-			i++;
-		}
+		(list.plus == 1 && *i != '-') ? *size += ft_print_symb('+', 1) : 0;
+		*i == '-' ? ft_putchar(*i) : 0;
+		*i == '-' ? i++ : 0;
 		if (list.width > list.precision && list.width > tmp && list.zero == 1)
 			*size += ft_print_symb('0', list.width - list.space - (list.plus ||
 				*i == '-') - (list.precision > tmp_2 ? list.precision : tmp_2));
@@ -98,6 +94,7 @@ static int	ft_type_d(t_param list, char *i)
 		prec_neg(&size, i, list, size);
 	else
 		prec_pos(&size, i, list, size);
+	free(i);
 	return (size);
 }
 
@@ -106,12 +103,13 @@ int			ft_d(t_param list, va_list ap)
 	if (list.length == 0)
 		return (ft_type_d(list, ft_itoa_base((int)va_arg(ap, int), 10)));
 	else if (list.length == 'l')
-		(ft_type_d(list, ft_itoa_base((long)va_arg(ap, int), 10)));
+		return (ft_type_d(list, ft_itoa_base((long)va_arg(ap, long), 10)));
 	else if (list.length == 'l' + 'l')
-		(ft_type_d(list, ft_itoa_base((long long)va_arg(ap, int), 10)));
+		return (ft_type_d(list,
+		ft_itoa_base((long long)va_arg(ap, long long), 10)));
 	else if (list.length == 'h')
-		(ft_type_d(list, ft_itoa_base((short)va_arg(ap, int), 10)));
+		return (ft_type_d(list, ft_itoa_base((short)va_arg(ap, int), 10)));
 	else if (list.length == 'h' + 'h')
-		(ft_type_d(list, ft_itoa_base((char)va_arg(ap, int), 10)));
+		return (ft_type_d(list, ft_itoa_base((char)va_arg(ap, int), 10)));
 	return (0);
 }

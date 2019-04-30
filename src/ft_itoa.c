@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 09:25:38 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/29 17:39:18 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 17:12:55 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	fill_arr(char *str, long long n, int num_dig, int is_neg)
 		str[0] = '-';
 	str[num_dig--] = '\0';
 	sign = 1;
-	if (n == -2147483648)
+	if (n < 0)
 		sign = -1;
 	while (n)
 	{

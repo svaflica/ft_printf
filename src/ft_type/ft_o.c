@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/29 18:39:25 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 17:24:24 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,14 @@ static void	prec_pos(int *size, char *str, t_param list, int tmp)
 static int			ft_type_o(t_param list, char *i)
 {
 	int		size;
-	// char	*str;
 	int		tmp;
 
 	size = 0;
-	// str = ft_itoa_base(i, 8);
-	// tmp = ft_strlen(str);
 	tmp = ft_strlen(i);
 	if (list.precision == -1)
-		// prec_neg(&size, str, list, tmp);
 		prec_neg(&size, i, list, tmp);
 	else
-		// prec_pos(&size, str, list, tmp);
 		prec_pos(&size, i, list, tmp);
-	// free(str);
 	free(i);
 	return (size);
 }

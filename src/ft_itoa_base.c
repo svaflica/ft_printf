@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:19:47 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 13:13:15 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:55:09 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,8 @@ char			*ft_itoa_base(long long n, int base)
 
 	if (base < 2 || base > 16)
 		return (NULL);
-	if (n == 0)
-	{
-		if (!(res = (char *)malloc(sizeof(char) * 2)))
-			return (NULL);
-		res[0] = '0';
-		res[1] = '\0';
-	}
+	if (n == 0 || base == 10)
+		res = ft_itoa(n);
 	else
 	{
 		num_d = ft_num_dig(n, base);

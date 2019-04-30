@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 16:35:02 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 17:26:57 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static int	ft_type_u(t_param list, char *i)
 		prec_neg(&size, i, list, size);
 	else
 		prec_pos(&size, i, list, size);
+	free(i);
 	return (size);
 }
 
