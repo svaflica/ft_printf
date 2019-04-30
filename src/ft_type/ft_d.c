@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 14:26:57 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:41:53 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,13 @@ static void	prec_pos(int *size, char *i, t_param list, int tmp)
 				*i == '-') - (list.precision > tmp_2 ? list.precision : tmp));
 		if (list.plus == 1 && *i != '-')
 			*size += ft_print_symb('+', 1);
-		if (*i == '-')
-		{
-			ft_putchar(*i);
-			i++;
-		}
+		*i == '-' ? ft_putchar(*i) : 0;
+		*i == '-' ? i++ : 0;
+		// if (*i == '-')
+		// {
+		// 	ft_putchar(*i);
+		// 	i++;
+		// }
 		if (list.width > list.precision && list.width > tmp && list.zero == 1)
 			*size += ft_print_symb('0', list.width - list.space - (list.plus ||
 				*i == '-') - (list.precision > tmp_2 ? list.precision : tmp_2));
