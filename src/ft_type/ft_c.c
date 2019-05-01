@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:52:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/26 14:33:48 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:56:15 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-int	ft_c(t_param list, int c)
+int	ft_c(t_param list, unsigned long long c)
 {
 	int size;
 
@@ -27,4 +27,3 @@ int	ft_c(t_param list, int c)
 		size += ft_print_symb(' ', list.width - 1);
 	return (size);
 }
-

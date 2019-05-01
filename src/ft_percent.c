@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 23:24:45 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 16:24:38 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int		ft_type(va_list ap, char **str, t_param list)
 {
 	if (**str == 'c' || **str == 'C')
-		return (ft_c(list, (char)va_arg(ap, int)));
-	else if (**str == 's')
+		return (ft_c(list, (unsigned long long)va_arg(ap, unsigned long long)));
+	else if (**str == 's' || **str == 'S')
 		return (ft_s(list, (char *)va_arg(ap, char *)));
 	else if (**str == 'o')
 		return (ft_o(list, ap));
