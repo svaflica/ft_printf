@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:34:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 17:54:00 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 23:39:44 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_two_b(unsigned long long c)
 {
 	unsigned char *str;
 
-	str = ft_strnew(4);
+	str = ft_strnew(2);
 	str[1] = (c & 63) | (2 << 6);
 	str[0] = ((c >> 6) & 31) | (6 << 5);
 	write(1, str, 2);
@@ -27,7 +27,7 @@ void		ft_three_b(unsigned long long c)
 {
 	unsigned char *str;
 
-	str = ft_strnew(4);
+	str = ft_strnew(3);
 	str[2] = (c & 63) | (2 << 6);
 	str[1] = ((c >> 6) & 63) | (2 << 6);
 	str[0] = ((c >> 12) & 15) | (14 << 4);

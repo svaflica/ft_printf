@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 14:37:31 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 23:39:25 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ typedef struct		s_param
 }					t_param;
 
 t_param				*ft_param_new(void);
-int					ft_param_add(t_param *new, char **str);
+int					ft_param_add(t_param *new, char **str, va_list ap);
 void				ft_param_nul(t_param *param);
 
 int					ft_printf(char *str, ...);
 
 size_t				ft_percent(va_list ap, char **str, t_param list);
 
-char				*ft_strnew(size_t size);
+unsigned char		*ft_strnew(size_t size);
 void				ft_putnbr(long long n);
 void				ft_putchar(unsigned long long c);
 void				ft_putstr(char const *s);
@@ -54,6 +54,7 @@ int					ft_p(t_param list, void *ptr);
 int					ft_d(t_param list, va_list ap);
 int					ft_u(t_param list, va_list ap);
 int					ft_o(t_param list, va_list ap);
+int					ft_x(t_param list, va_list ap);
 int					ft_prcnt(t_param list);
 
 char				*ft_strchr(const char *s, int c);

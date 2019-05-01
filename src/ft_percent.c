@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 16:24:38 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 23:37:05 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int		ft_type(va_list ap, char **str, t_param list)
 		return (ft_d(list, ap));
 	else if (**str == 'u')
 		return (ft_u(list, ap));
+	else if (**str == 'x')
+		return (ft_x(list, ap));
 	else if (**str == '%')
 		return (ft_prcnt(list));
 	else
@@ -35,6 +37,6 @@ static int		ft_type(va_list ap, char **str, t_param list)
 
 size_t			ft_percent(va_list ap, char **str, t_param list)
 {
-	ft_param_add(&list, str);
+	ft_param_add(&list, str, ap);
 	return (ft_type(ap, str, list));
 }
