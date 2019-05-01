@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_o.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/30 17:24:24 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 13:57:18 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
-#include <stdio.h>
 
-static void	prec_neg(int *size, char *str, t_param list, int tmp)
+static void		prec_neg(int *size, char *str, t_param list, int tmp)
 {
 	if (list.minus == 0 && list.zero == 0 && list.width - list.hasht > tmp)
 		*size = ft_print_symb(' ', list.width - list.hasht - tmp);
@@ -25,7 +24,7 @@ static void	prec_neg(int *size, char *str, t_param list, int tmp)
 		*size += ft_print_symb(' ', list.width - list.hasht - tmp);
 }
 
-static void	prec_pos(int *size, char *str, t_param list, int tmp)
+static void		prec_pos(int *size, char *str, t_param list, int tmp)
 {
 	if (*str == '0' && tmp == 1)
 		tmp = 0;
@@ -42,7 +41,7 @@ static void	prec_pos(int *size, char *str, t_param list, int tmp)
 		*size += ft_print_symb(' ', list.width - list.precision);
 }
 
-static int			ft_type_o(t_param list, char *i)
+static int		ft_type_o(t_param list, char *i)
 {
 	int		size;
 	int		tmp;

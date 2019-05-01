@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 18:41:09 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 14:03:26 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,10 @@ int			ft_d(t_param list, va_list ap)
 	if (list.length == 0)
 		return (ft_type_d(list, ft_itoa_base((int)va_arg(ap, int), 10)));
 	else if (list.length == 'l')
-		return (ft_type_d(list, ft_itoa_base((long)va_arg(ap, int), 10)));
+		return (ft_type_d(list, ft_itoa_base((long)va_arg(ap, long), 10)));
 	else if (list.length == 'l' + 'l')
-		return (ft_type_d(list, ft_itoa_base((long long)va_arg(ap, int), 10)));
+		return (ft_type_d(list,
+		ft_itoa_base((long long)va_arg(ap, long long), 10)));
 	else if (list.length == 'h')
 		return (ft_type_d(list, ft_itoa_base((short)va_arg(ap, int), 10)));
 	else if (list.length == 'h' + 'h')
