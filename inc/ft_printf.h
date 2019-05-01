@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/29 18:44:37 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 12:25:15 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int					ft_printf(char *str, ...);
 
 size_t				ft_percent(va_list ap, char **str, t_param list);
 
+char				*ft_strnew(size_t size);
 void				ft_putnbr(long long n);
-void				ft_putchar(char c);
+void				ft_putchar(unsigned int c);
 void				ft_putstr(char const *s);
 int					ft_putnstr(char *str, int size);
 size_t				ft_strlen(const char *s);
