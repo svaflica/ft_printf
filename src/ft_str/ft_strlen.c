@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:49:31 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 08:45:30 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 11:01:06 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int res;
+	char *tmp;
 
-	res = 0;
+	tmp = s;
 	if (s)
-		while (*s)
-		{
-			s++;
-			res++;
-		}
-	return (res);
+		while (*tmp)
+			tmp++;
+	return (tmp - s);
 }

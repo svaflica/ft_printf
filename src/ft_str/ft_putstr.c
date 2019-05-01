@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 11:37:58 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 08:45:21 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 11:02:55 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr(char const *s)
 {
-	if (s == NULL)
+	if (!s)
 		return ;
 	while (*s)
 	{
