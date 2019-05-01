@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 17:35:38 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 23:24:45 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int		ft_type(va_list ap, char **str, t_param list)
 		return (ft_u(list, ap));
 	else if (**str == '%')
 		return (ft_prcnt(list));
+	else
+		return (ft_print_symb(**str, 1));
 	return (0);
 }
 

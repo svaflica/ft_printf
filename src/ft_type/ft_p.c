@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:16:42 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/26 10:02:19 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 10:55:25 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int		ft_p(t_param list, void *ptr)
 {
 	int				size;
-	int				tmp;
+	long long		tmp;
 	char			*str;
 
 	size = 0;
-	tmp = (int)ptr;
-	str = ft_itoa_base(tmp, 16);
+	tmp = (unsigned long long)ptr;
+	str = ft_itoa_base_ll(tmp, 16);
 	tmp = ft_strlen(str);
 	if (list.minus == 1 && list.width > tmp + 2)
 		size += ft_print_symb(' ', list.width - tmp - 2);

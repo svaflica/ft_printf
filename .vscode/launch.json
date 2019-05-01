@@ -5,7 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-             "name": "gcc build and debug active file",
+
+            "name": "gcc build and debug active file",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/../a.out",

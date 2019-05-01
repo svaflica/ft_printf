@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:19:47 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 13:17:11 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/04/30 23:34:06 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char			*ft_itoa_base_ll(unsigned long long n, int base)
 	char	*res;
 	int		num_d;
 
-	//printf("((((((      %llu\n", n);
 	if (base < 2 || base > 16)
 		return (NULL);
 	if (n == 0)
@@ -48,7 +47,6 @@ char			*ft_itoa_base_ll(unsigned long long n, int base)
 	else
 	{
 		num_d = ft_num_dig(n, base);
-		//printf("%d\n", num_d);
 		if (!(res = (char *)malloc(sizeof(char) * (num_d + 1))))
 			return (NULL);
 		turn_into_char(res, n, base, num_d);
