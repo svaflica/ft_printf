@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 10:49:31 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 11:01:06 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 13:22:22 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlen(const char *s)
 {
 	char *tmp;
 
-	tmp = s;
+	tmp = (char*)s;
 	if (s)
 		while (*tmp)
 			tmp++;

@@ -3,25 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 11:06:36 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 13:27:55 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 #include <stdio.h>
 //gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c && ./a.out
-
-int main(void)
-
+int main (void)
 {
-	int a[3] = {1, 2, 3};
-	// double f = 0.0000022321555;
-	printf("%d\n\n\n\n\n", printf("%p\n", &a[1]));
-	printf("%d\n\n\n\n\n", ft_printf("%p\n", &a[1]));
-	//ft_printf("%15.4d\n", -424242);
-	//ft_printf("%lld\n", -9223372036854775808);
-	return (0);
+int a[1] = {1};
+
+printf("%8.10p\n", 0);
+ft_printf("%8.10p\n", 0);
+
+//ft_printf("%-10.0p\n", 0);
+	// printf("-->%20.0p<--\n", &a);
+	// ft_printf("-->%20.0p<--\n\n", &a);
+
+	// printf("-->%-20p<--\n", &a);
+	// ft_printf("-->%-20p<--\n\n", &a);
+
+	// printf("-->%20.17p<--\n", &a);
+	// ft_printf("-->%20.17p<--\n\n", &a);
+
+	// printf("-->%-20.17p<--\n", &a);
+	// ft_printf("-->%-20.17p<--\n\n", &a);
 }
