@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 10:27:01 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 17:02:09 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int			ft_u(t_param list, va_list ap)
 				ft_itoa_base_ll((unsigned)va_arg(ap, unsigned), 10)));
 	else if (list.length == 'l')
 		return (ft_type_u(list,
-				ft_itoa_base_ll(va_arg(ap, unsigned long), 10)));
+				ft_itoa_base_ll((unsigned long)va_arg(ap, unsigned long), 10)));
 	else if (list.length == 'l' + 'l')
 		return (ft_type_u(list,
 	ft_itoa_base_ll((unsigned long long)va_arg(ap, unsigned long long), 10)));

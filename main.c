@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 14:01:10 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/01 16:18:43 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,25 @@
 //gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c && ./a.out
 int main (void)
 {
-int a[1] = {1};
+	// int a = -9999;
+	// char *str;
 
-printf("%8.10p\n", 0);
-ft_printf("%8.10p\n", 0);
+	// printf("%x\n", a);
+	// ft_printf("%x\n", a);
 
-{
-	ft_putchar(162);
+	// printf("-->%x<--\n", -9999);
+	// printf("-->%-020x<--\n", -9999);
+	// printf("-->%#x<--\n", -9999);
+	// printf("-->%-x<--\n", -9999);
+	// printf("-->%#-30.20x<--\n", -9999);
+	// printf("-->%015x<--\n", -9999);
+	// printf("-->%015.x<--\n", -9999);
+	// ft_printf("-->%#10x<--\n", 0);
+	printf("%#.x\n", 0);
+	ft_printf("%.x\n", 0);
+	// ft_printf("-->%#010x<--\n", 0);
+	// printf("-->%-10x<--\n", -9999);
+	// printf("-->%10x<--\n", -9999);
 
-	// double f = 0.0000022321555;
-	//ft_printf("%15.4d\n", -424242);
-	//ft_printf("%lld\n", -9223372036854775808);
-	return (0);
+
 }
