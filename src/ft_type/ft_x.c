@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 13:58:01 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/01 22:25:09 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/05 15:30:58 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ static void	minus_neg(t_param list, char *i, int *size, int tmp)
 		(*i == '0' ? 0 : list.hasht));
 	if (list.precision > tmp)
 		*size += ft_print_symb('0', list.precision - tmp);
-	list.precision == -1 ? ft_putstr(i) : (*i == '0' ? 0 : ft_putstr(i));
+	if (list.precision == -1)
+		ft_putstr(i);
+	else if (*i != '0')
+		ft_putstr(i);
+	// list.precision == -1 ? ft_putstr(i) : (*i == '0' ? 0 : ft_putstr(i));
 }
 
 static void	minus_pos(t_param list, char *i, int *size, int tmp)
@@ -35,7 +39,11 @@ static void	minus_pos(t_param list, char *i, int *size, int tmp)
 		*size += ft_putnstr("0x", 2);
 	if (list.precision > tmp)
 		*size += ft_print_symb('0', list.precision - tmp);
-	list.precision == -1 ? ft_putstr(i) : (*i == '0' ? 0 : ft_putstr(i));
+	if (list.precision == -1)
+		ft_putstr(i);
+	else if (*i != '0')
+		ft_putstr(i);
+	// list.precision == -1 ? ft_putstr(i) : (*i == '0' ? 0 : ft_putstr(i));
 	if (list.width > list.precision && list.width > tmp)
 		*size += ft_print_symb(' ', list.width - (list.precision > tmp ?
 		list.precision : tmp) - (*i == '0' ? 0 : list.hasht));
@@ -67,7 +75,7 @@ int			ft_x(t_param list, va_list ap)
 				ft_itoa_base((unsigned)va_arg(ap, unsigned), 16)));
 	else if (list.length == 'l')
 		return (ft_type_x(list,
-				ft_itoa_base((unsigned long)va_arg(ap, unsigned), 16)));
+				ft_itoa_base((unsigned long)va_arg(ap, unsigned long), 16)));
 	else if (list.length == 'l' + 'l')
 		return (ft_type_x(list,
 				ft_itoa_base((unsigned long long)va_arg(ap, unsigned long long), 16)));

@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 16:15:49 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/04/28 16:31:21 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/05 15:49:25 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_prcnt(t_param list)
 	int	size;
 
 	size = 0;
-	if (list.width > 1 && list.minus == 0)
+	if (list.minus == 0 && list.zero == 1 && list.width > 1)
+		size += ft_print_symb('0', list.width - 1);
+	else if (list.width > 1 && list.minus == 0)
 		size += ft_print_symb(' ', list.width - 1);
 	size += 1;
 	ft_putchar('%');

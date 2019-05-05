@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 23:39:25 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/05 15:28:20 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int					ft_d(t_param list, va_list ap);
 int					ft_u(t_param list, va_list ap);
 int					ft_o(t_param list, va_list ap);
 int					ft_x(t_param list, va_list ap);
+int					ft_x_up(t_param list, va_list ap);
 int					ft_prcnt(t_param list);
 
 char				*ft_strchr(const char *s, int c);
