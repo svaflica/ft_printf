@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/05/01 17:51:18 by djeanna          ###   ########.fr       */
-=======
-/*   Updated: 2019/05/01 16:18:43 by qclubfoo         ###   ########.fr       */
->>>>>>> origin/qclubfoo
+/*   Updated: 2019/05/05 18:01:35 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +15,6 @@
 //gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c && ./a.out
 int main (void)
 {
-<<<<<<< HEAD
-	printf("%d\n\n", ft_printf("ddd%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
-%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",
-' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
-'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
-printf("\n\n%d\n", printf("ddd%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\
-%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",
-' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
-'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}'));
-	//ft_printf("%C\n", 1500);
-	// double f = 0.0000022321555;
-	//ft_printf("%15.4d\n", -424242);
-	//ft_printf("%lld\n", -9223372036854775808);
-	return (0);
-=======
 	// int a = -9999;
 	// char *str;
 
@@ -58,12 +29,13 @@ printf("\n\n%d\n", printf("ddd%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c %c%c%c%c%
 	// printf("-->%015x<--\n", -9999);
 	// printf("-->%015.x<--\n", -9999);
 	// ft_printf("-->%#10x<--\n", 0);
-	printf("%#.x\n", 0);
-	ft_printf("%.x\n", 0);
+
+			printf("%d\n\n", ft_printf("1111111111111111111111111"));
+	// ft_printf("%s\n", 9223372036854775807);
+	// printf("%s\n", 9223372036854775807);
 	// ft_printf("-->%#010x<--\n", 0);
 	// printf("-->%-10x<--\n", -9999);
 	// printf("-->%10x<--\n", -9999);
 
 
->>>>>>> origin/qclubfoo
 }

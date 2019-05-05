@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnstr.c                                       :+:      :+:    :+:   */
+/*   ft_do_buf_empty.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 13:57:38 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/28 13:00:27 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/05/05 16:46:30 by djeanna           #+#    #+#             */
+/*   Updated: 2019/05/05 18:02:48 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-int		ft_putnstr(char *str, int size)
+int		ft_do_buf_empty(t_buf *buf)
 {
-	int i;
+	int size;
 
-	i = 0;
-	while (*str && i < size)
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	size = buf->size;
+	write(1, buf->buf, buf->top + 1);
+	free(buf->buf);
+	buf = NULL;
+	return (size);
 }

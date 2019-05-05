@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_symb.c                                    :+:      :+:    :+:   */
+/*   ft_buf_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 11:13:50 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 17:24:49 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/05/02 15:37:10 by djeanna           #+#    #+#             */
+/*   Updated: 2019/05/02 16:19:45 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-int		ft_print_symb(int c, int size)
+t_buf				*ft_buf_new(t_buf *new)
 {
-	int	tmp;
-
-	tmp = size;
-	while (size--)
-		ft_putchar(c);
-	return (tmp);
+	new->size = 0;
+	new->top = -1;
+	if (!(new->buf = ft_strnew(1000)))
+		return (NULL);
+	return (new);
 }

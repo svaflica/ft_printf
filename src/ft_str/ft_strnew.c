@@ -6,24 +6,11 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:43:45 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 23:40:03 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/05 16:43:34 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
-
-static void		*ft_memset(void *b, int c, size_t len)
-{
-	unsigned char	*res;
-
-	res = (unsigned char *)b;
-	while (len--)
-	{
-		*res = c;
-		res++;
-	}
-	return (b);
-}
 
 static void		ft_bzero(void *s, size_t n)
 {
