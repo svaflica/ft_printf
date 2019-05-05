@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/05 19:31:43 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/05 20:11:33 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ static void			ft_type_o(t_param list, char *i, t_buf *buf)
 void				ft_o(t_param list, va_list ap, t_buf *buf)
 {
 	if (list.length == 0)
-		return (ft_type_o(list,
-				ft_itoa_base((unsigned int)va_arg(ap, int), 8), buf));
+		ft_type_o(list,
+				ft_itoa_base((unsigned int)va_arg(ap, int), 8), buf);
 	else if (list.length == 'l')
-		return (ft_type_o(list,
-				ft_itoa_base((unsigned long)va_arg(ap, int), 8), buf));
+		ft_type_o(list,
+				ft_itoa_base((unsigned long)va_arg(ap, int), 8), buf);
 	else if (list.length == 'l' + 'l')
-		return (ft_type_o(list,
-				ft_itoa_base((unsigned long long)va_arg(ap, int), 8), buf));
+		ft_type_o(list,
+				ft_itoa_base((unsigned long long)va_arg(ap, int), 8), buf);
 	else if (list.length == 'h')
-		return ((ft_type_o(list,
-				ft_itoa_base((unsigned short)va_arg(ap, int), 8), buf)));
+		ft_type_o(list,
+				ft_itoa_base((unsigned short)va_arg(ap, int), 8), buf);
 	else if (list.length == 'h' + 'h')
-		return (ft_type_o(list,
-				ft_itoa_base((unsigned char)va_arg(ap, int), 8), buf));
+		ft_type_o(list,
+				ft_itoa_base((unsigned char)va_arg(ap, int), 8), buf);
 }

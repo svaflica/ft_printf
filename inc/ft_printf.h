@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 18:09:48 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/05 21:01:10 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct		s_buf
 
 
 t_param				*ft_param_new(void);
-int					ft_param_add_s(t_param *new, char **str, va_list ap);
+int					ft_param_add(t_param *new, char **str, va_list ap);
 void				ft_param_nul(t_param *param);
 
 t_buf				*ft_buf_new(t_buf *new);
@@ -64,6 +64,8 @@ int					ft_print_symb(int c, int size);
 int					ft_num_dig(long long n, int base);
 void				*ft_memset(void *b, int c, size_t len);
 char				*ft_memnew(size_t i, int lett);
+long double			ft_neg_pow(long double n, int pow);
+char				*ft_strjoin(char const *s1, char const *s2);
 
 void				ft_c(t_param list, unsigned long long c, t_buf *buf);
 void				ft_s(t_param list, char *s, t_buf *buf);
@@ -73,6 +75,9 @@ void				ft_u(t_param list, va_list ap, t_buf *buf);
 void				ft_o(t_param list, va_list ap, t_buf *buf);
 void				ft_x(t_param list, va_list ap, t_buf *buf);
 void				ft_prcnt(t_param list, t_buf *buf);
+void				ft_x_up(t_param list, va_list ap, t_buf *buf);
+void				ft_x(t_param list, va_list ap, t_buf *buf);
+char				*ft_dota(long double f, int precision);
 
 char				*ft_strchr(const char *s, int c);
 

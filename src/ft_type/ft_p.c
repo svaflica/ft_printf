@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:16:42 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 19:49:24 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/05 20:28:54 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		ft_zero(t_param list, int len, t_buf *buf)
 			- list.precision - 2, ' ')) : ft_buf_add_s(buf, ft_memnew(list.width
 			- len, ' '));
 		}
-		write(1, "0x", 2);
+		ft_buf_add_s(buf, "0x");
 		if (list.precision > len - 2)
 			ft_buf_add_s(buf, ft_memnew(list.precision - len + 2, '0'));
 	}
@@ -45,7 +45,7 @@ static void	minus_pos(t_param list, char *str, int len, t_buf *buf)
 	ft_buf_add_s(buf, "0x");
 	if (list.precision > len - 2)
 		ft_buf_add_s(buf, ft_memnew(list.precision - len + 2, '0'));
-	ft_putstr(str);
+	ft_buf_add_s(buf, str);
 	if (list.width > list.precision && list.width > len)
 	{
 		if (list.precision > len - 2)
@@ -72,7 +72,6 @@ static void	minus_neg(t_param list, char *str, int len, t_buf *buf)
 
 void				ft_p(t_param list, void *ptr, t_buf *buf)
 {
-	int				size;
 	long long		tmp;
 	char			*str;
 	int				len;
@@ -80,7 +79,6 @@ void				ft_p(t_param list, void *ptr, t_buf *buf)
 	tmp = (unsigned long long)ptr;
 	str = ft_itoa_base_ll(tmp, 16);
 	len = ft_strlen(str) + 2;
-	size = len;
 	if (*str == '0' && len == 3 && list.precision > -1)
 		ft_zero(list, len - 1, buf);
 	else if (list.minus == 1)
