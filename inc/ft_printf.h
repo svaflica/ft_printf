@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 14:06:29 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/01 23:39:25 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,23 @@ typedef struct		s_param
 }					t_param;
 
 t_param				*ft_param_new(void);
-int					ft_param_add(t_param *new, char **str);
+int					ft_param_add(t_param *new, char **str, va_list ap);
 void				ft_param_nul(t_param *param);
 
 int					ft_printf(char *str, ...);
 
 size_t				ft_percent(va_list ap, char **str, t_param list);
 
-char				*ft_strnew(size_t size);
+unsigned char		*ft_strnew(size_t size);
 void				ft_putnbr(long long n);
-void				ft_putchar(unsigned int c);
+void				ft_putchar(unsigned long long c);
 void				ft_putstr(char const *s);
 int					ft_putnstr(char *str, int size);
 size_t				ft_strlen(const char *s);
 int					ft_print_symb(int c, int size);
 int					ft_num_dig(long long n, int base);
 
-int					ft_c(t_param list, int c);
+int					ft_c(t_param list, unsigned long long c);
 int					ft_s(t_param list, char *s);
 int					ft_p(t_param list, void *ptr);
 int					ft_d(t_param list, va_list ap);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_param_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/25 17:28:14 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/01 23:36:56 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,24 @@ static void		ft_flags(t_param *new, char **str)
 	(new->zero == 1 && new->minus == 1) ? new->zero = 0 : 1;
 }
 
-int				ft_param_add(t_param *new, char **str)
+static void		ft_get_width(t_param *new, char **str, va_list ap)
+{
+	if (**str == '*')
+	{
+		new->width = (unsigned long long)va_arg(ap, unsigned long long);
+		*str = *str + 1;
+	}
+	else
+	{
+		new->width = ft_atoi(*str);
+		ft_skip_num(str);
+	}
+}
+
+int				ft_param_add(t_param *new, char **str, va_list ap)
 {
 	ft_flags(new, str);
-	new->width = ft_atoi(*str);
-	ft_skip_num(str);
+	ft_get_width(new, str, ap);
 	if (**str == '.')
 	{
 		if (*(*str + 1) >= '0' && *(*str + 1) <= '9')
@@ -64,6 +77,11 @@ int				ft_param_add(t_param *new, char **str)
 			new->precision = 0;
 		*str += 1;
 		ft_skip_num(str);
+	}
+	else if (**str == '*')
+	{
+		new->precision = (unsigned long long)va_arg(ap, unsigned long long);
+		*str = *str + 1;
 	}
 	ft_get_length(str, new);
 	return (1);
