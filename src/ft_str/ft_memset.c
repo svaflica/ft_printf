@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 11:53:06 by ashari            #+#    #+#             */
-/*   Updated: 2019/04/29 17:39:58 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/03 09:15:46 by djeanna           #+#    #+#             */
+/*   Updated: 2019/05/02 17:56:32 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-void	ft_putnbr(long long n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (n == (2147483648 * (-1)))
+	unsigned char	*res;
+
+	res = (unsigned char *)b;
+	while (len--)
 	{
-		ft_putstr("-2147483648");
-		return ;
+		*res = c;
+		res++;
 	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-		ft_putchar(n + '0');
+	return (b);
 }

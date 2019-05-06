@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 11:43:45 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 16:43:34 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/07 11:59:28 by djeanna           #+#    #+#             */
+/*   Updated: 2019/05/04 22:06:34 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static void		ft_bzero(void *s, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	ft_memset(s, '\0', n);
-}
+	int		len1;
+	int		len2;
+	int		iter;
+	char	*res;
 
-
-static void		*ft_memalloc(size_t size)
-{
-	void	*new;
-
-	new = NULL;
-	if (size != 0)
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (!(res = (char *)malloc(sizeof(char) * (len1 + len2 + 1))))
+		return (NULL);
+	iter = 0;
+	while (iter < len1)
 	{
-		if (!(new = (void *)malloc(size)))
-			return (NULL);
-		ft_bzero(new, size);
+		res[iter] = s1[iter];
+		iter++;
 	}
-	return (new);
-}
-
-unsigned char	*ft_strnew(size_t size)
-{
-	return ((unsigned char *)ft_memalloc(size + 1));
+	while (iter - len1 < len2)
+	{
+		res[iter] = s2[iter - len1];
+		iter++;
+	}
+	res[iter] = '\0';
+	return (res);
 }

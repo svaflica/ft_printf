@@ -3,125 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 17:02:09 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/05 20:29:42 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-// static void	prec_neg(int *size, char *i, t_param list, int tmp)
-// {
-// 	if (list.minus == 0 && list.zero == 0 && list.width - list.plus > tmp)
-// 		*size += ft_print_symb(' ', list.width - list.plus - tmp);
-// 	if (list.minus == 0 && list.zero == 1 && list.width - list.plus > tmp)
-// 		*size += ft_print_symb('0', list.width - list.plus - tmp);
-// 	ft_putstr(i);
-// 	if (list.minus == 1 && list.width - list.plus > tmp)
-// 		*size += ft_print_symb(' ', list.width - list.plus - tmp);
-// }
-
-// static void	prec_pos(int *size, char *i, t_param list, int tmp)
-// {
-// 	if (list.minus == 0 && list.zero == 0 &&
-// 		list.width - list.plus - list.precision > tmp)
-// 		*size += ft_print_symb(' ',
-// 						list.width - list.plus - list.precision - tmp);
-// 	if (list.precision > tmp)
-// 		*size += ft_print_symb('0', list.precision - tmp - list.plus);
-// 	ft_putstr(i);
-// 	if (list.width > (list.precision + tmp))
-// 		*size += ft_print_symb(' ', list.width - list.precision - tmp);
-// }
-
-// static int	ft_type_u(t_param list, char *i)
-// {
-// 	int size;
-
-// 	size = ft_strlen(i);
-// 	if (list.precision == -1)
-// 		prec_neg(&size, i, list, size);
-// 	else
-// 		prec_pos(&size, i, list, size);
-// 	free(i);
-// 	return (size);
-// }
-
-static void	minus_pos(int *size, char *i, t_param list, int tmp)
+static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 {
 	if (list.precision > tmp && list.zero == 0)
-		*size += ft_print_symb('0', list.precision - tmp);
-	ft_putstr(i);
+		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'));
+	ft_buf_add_s(buf, i);
 	if (list.width > list.precision && list.width > tmp && list.zero == 1)
-		*size += ft_print_symb('0', list.width - list.space -
-				(list.precision > tmp ? list.precision : tmp));
+		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
+				(list.precision > tmp ? list.precision : tmp), '0'));
 	if (list.width > list.precision && list.width > tmp)
-		*size += ft_print_symb(' ', list.width - list.space -
-			(list.precision > tmp ? list.precision : tmp));
+		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
+			(list.precision > tmp ? list.precision : tmp), ' '));
 }
 
-static void	prec_neg(int *size, char *i, t_param list, int tmp)
+static void	prec_neg(char *i, t_param list, int tmp, t_buf *buf)
 {
-	// if (list.space == 1)
-	// 	*size += ft_print_symb(' ', 1);
 	if (list.minus == 0 && list.zero == 0 && list.width > tmp)
-		*size += ft_print_symb(' ', list.width - tmp);
+		ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
 	if (list.minus == 0 && list.zero == 1 && list.width > tmp)
-		*size += ft_print_symb('0', list.width - tmp);
-	ft_putstr(i);
+		ft_buf_add_s(buf, ft_memnew(list.width - tmp, '0'));
+	ft_buf_add_s(buf, i);
 	if (list.minus == 1 && list.width > tmp)
-		*size += ft_print_symb(' ', list.width - tmp);
+		ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
 }
 
-static void	prec_pos(int *size, char *i, t_param list, int tmp)
+static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 {
 	*i == '0' && list.precision == 0 ? tmp -= 1 : 0;
-	// if ((list.space == 1) || (list.space == 1 && list.plus == 0))
-	// 	*size += ft_print_symb(' ', 1);
 	if (list.width > list.precision && list.width > tmp)
-		*size += ft_print_symb(' ', list.width - list.space -
-			(list.precision > tmp ? list.precision : tmp));
+		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
+			(list.precision > tmp ? list.precision : tmp), ' '));
 	if (list.width > list.precision && list.width > tmp && list.zero == 1)
-		*size += ft_print_symb('0', list.width - list.space -
-			(list.precision > tmp ? list.precision : tmp));
+		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
+			(list.precision > tmp ? list.precision : tmp), '0'));
 	if (list.precision > tmp && list.zero == 0)
-		*size += ft_print_symb('0', list.precision - tmp);
-	*i == '0' && list.precision == 0 ? *size = *size - 1 : ft_putstr(i);
+		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'));
+	*i == '0' && list.precision == 0 ? NULL : ft_buf_add_s(buf, i);
 }
 
-static int	ft_type_u(t_param list, char *i)
+static void	ft_type_u(t_param list, char *i, t_buf *buf)
 {
-	int size;
-
-	size = ft_strlen(i);
 	if (list.precision == -1)
-		prec_neg(&size, i, list, size);
+		prec_neg(i, list, ft_strlen(i), buf);
 	else if (list.minus == 0)
-		prec_pos(&size, i, list, size);
+		prec_pos(i, list, ft_strlen(i), buf);
 	else if (list.minus == 1)
-		minus_pos(&size, i, list, size);
+		minus_pos(i, list, ft_strlen(i), buf);
 	free(i);
-	return (size);
 }
 
-int			ft_u(t_param list, va_list ap)
+void			ft_u(t_param list, va_list ap, t_buf *buf)
 {
 	if (list.length == 0)
-		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned)va_arg(ap, unsigned), 10)));
+		ft_type_u(list,
+		ft_itoa_base_ll((unsigned)va_arg(ap, unsigned), 10), buf);
 	else if (list.length == 'l')
-		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned long)va_arg(ap, unsigned long), 10)));
+		ft_type_u(list,
+		ft_itoa_base_ll((unsigned long)va_arg(ap, unsigned long), 10), buf);
 	else if (list.length == 'l' + 'l')
-		return (ft_type_u(list,
-	ft_itoa_base_ll((unsigned long long)va_arg(ap, unsigned long long), 10)));
+		ft_type_u(list,
+		ft_itoa_base_ll((unsigned long long)va_arg(ap, unsigned long long),
+		10), buf);
 	else if (list.length == 'h')
-		return ((ft_type_u(list,
-				ft_itoa_base_ll((unsigned short)va_arg(ap, unsigned), 10))));
+		ft_type_u(list,
+			ft_itoa_base_ll((unsigned short)va_arg(ap, unsigned), 10), buf);
 	else if (list.length == 'h' + 'h')
-		return (ft_type_u(list,
-				ft_itoa_base_ll((unsigned char)va_arg(ap, unsigned), 10)));
-	return (0);
+		ft_type_u(list,
+				ft_itoa_base_ll((unsigned char)va_arg(ap, unsigned), 10), buf);
 }

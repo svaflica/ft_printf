@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_memnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 11:37:58 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/01 11:02:55 by djeanna          ###   ########.fr       */
+/*   Created: 2019/05/05 16:17:03 by djeanna           #+#    #+#             */
+/*   Updated: 2019/05/05 16:23:57 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-void	ft_putstr(char const *s)
+char	*ft_memnew(size_t i, int lett)
 {
-	if (!s)
-		return ;
-	while (*s)
-	{
-		ft_putchar((char)*s);
-		s++;
-	}
+	return (ft_memset(ft_strnew(i), lett, i));
 }

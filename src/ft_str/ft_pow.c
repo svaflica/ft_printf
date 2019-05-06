@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 11:43:45 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 16:43:34 by djeanna          ###   ########.fr       */
+/*   Created: 2019/05/04 23:03:36 by djeanna           #+#    #+#             */
+/*   Updated: 2019/05/05 12:26:35 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_printf.h"
-
-static void		ft_bzero(void *s, size_t n)
+long double	ft_neg_pow(long double n, int pow)
 {
-	ft_memset(s, '\0', n);
-}
+	long double res;
 
-
-static void		*ft_memalloc(size_t size)
-{
-	void	*new;
-
-	new = NULL;
-	if (size != 0)
-	{
-		if (!(new = (void *)malloc(size)))
-			return (NULL);
-		ft_bzero(new, size);
-	}
-	return (new);
-}
-
-unsigned char	*ft_strnew(size_t size)
-{
-	return ((unsigned char *)ft_memalloc(size + 1));
+	res = 1;
+	pow *= -1;
+	while (pow)
+		if (pow & 1)
+		{
+			res = (long double)res / (long double)n;
+			--pow;
+		}
+		else
+		{
+			n = (long double)n * (long double)n;
+			pow >>= 1;
+		}
+	return (res);
 }
