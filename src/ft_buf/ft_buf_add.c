@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buf_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 18:09:30 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/06 12:44:35 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void				ft_buf_add_s(t_buf *new, char *str)
 	len = ft_strlen(str);
 	if (new->top + 1 + len >= 20)
 	{
-		new->size += new->top + 1;
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;
 	}
