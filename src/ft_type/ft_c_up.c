@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_c_up.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 10:52:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 15:35:46 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/05/06 15:34:15 by qclubfoo          #+#    #+#             */
+/*   Updated: 2019/05/06 15:36:21 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-void	ft_c(t_param list, char c, t_buf *buf)
+void				ft_c_up(t_param list, unsigned long long c, t_buf *buf)
 {
 	if (list.minus == 0 && list.zero == 1 && list.width > 1)
 		ft_buf_add_s(buf,
@@ -20,7 +20,7 @@ void	ft_c(t_param list, char c, t_buf *buf)
 	else if (list.minus == 0 && list.zero == 0 && list.width > 1)
 		ft_buf_add_s(buf,
 			ft_memset(ft_strnew(list.width - 1), ' ', list.width - 1));
-	ft_buf_add_c(buf, c);
+	ft_buf_add_nc(buf, c);
 	if (list.minus == 1 && list.width > 1)
 		ft_buf_add_s(buf,
 			ft_memset(ft_strnew(list.width - 1), ' ', list.width - 1));

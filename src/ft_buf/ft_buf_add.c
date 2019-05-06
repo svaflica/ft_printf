@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 12:44:35 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/06 18:34:37 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,18 @@ void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 		}
 }
 
-void				ft_buf_add_c(t_buf *new, unsigned long long c)
+void				ft_buf_add_c(t_buf *new, char c)
+{
+	if (new->top + 1 >= 20)
+	{
+		ft_print_and_free(new->top, new->buf);
+		new->top = -1;
+	}
+	new->buf[++new->top] = c;
+	new->size++;
+}
+
+void				ft_buf_add_nc(t_buf *new, unsigned long long c)
 {
 	if (new->top + 1 + (c <= 127) + (c <= 2047) + (c <= 65535) + (c > 65535)
 			>= 20)

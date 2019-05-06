@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 20:20:20 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/06 15:39:56 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_printf(char *str, ...)
 			ft_detect_color(&str, &buf);
 		else */
 			ft_buf_add_c(&buf, *str);
-		str++;
+		*str ? str++ : NULL;
 	}
 	res = ft_do_buf_empty(&buf);
 	va_end(ap);

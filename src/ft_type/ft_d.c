@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 12:31:25 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/06 18:33:08 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 	// if (list.precision > tmp_2 && list.zero == 0)
 	if (list.precision > tmp_2)
 		ft_buf_add_s(buf, ft_memnew(list.precision - tmp_2, '0'));
-*i == '-' ? i++ : 0;
+	*i == '-' ? i++ : 0;
 	*i == '0' && list.precision == 0 ? NULL : ft_buf_add_s(buf, i);
 }
 

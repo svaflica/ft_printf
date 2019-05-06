@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 13:54:14 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/06 18:22:07 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 //gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c ./src/ft_buf/*.c && ./a.out
 int main (void)
 {
-	ft_printf("ft_printf(\"%%lu\\n\", -42) %lu\n", -42);
-	printf("printf(\"%%lu\\n\", -42) %lu\n", -42);
-
-	ft_printf("ft_printf(\"%%lu\\n\", (unsigned long)-42) %lu\n", (unsigned long)-42);
-	printf("printf(\"%%lu\", (unsigned long)-42) %lu", (unsigned long)-42);
+	ft_printf("%lu\n", -42);
+	printf("%lu\n", -42);
+	ft_printf("%lu\n", (unsigned long)-42);
+	printf("%lu", (unsigned long)-42);
 }

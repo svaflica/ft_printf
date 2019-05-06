@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/05 15:36:05 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/06 18:18:48 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int				ft_param_add(t_param *new, char **str, va_list ap)
 	{
 		if (*(*str + 1) >= '0' && *(*str + 1) <= '9')
 			new->precision = ft_atoi(*str + 1);
+		else if (*(*str + 1) == '-')
+			new->precision = -2;
 		else if (*(*str + 1) == '\0')
 			return (-1);
 		else
