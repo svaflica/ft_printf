@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 15:33:45 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/07 15:28:10 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 	if (**str == 'c')
 		ft_c(list, (char)va_arg(ap, int), buf);
 	else if (**str == 'C')
-		ft_c_up(list, (unsigned long long)va_arg(ap, unsigned long long), buf);
+		ft_c_up(list, (wchar_t)va_arg(ap, unsigned long long), buf);
 	else if (**str == 's' || **str == 'S')
 		ft_s(list, (char *)va_arg(ap, char *), buf);
 	else if (**str == 'o')

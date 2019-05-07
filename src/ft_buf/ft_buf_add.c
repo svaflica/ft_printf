@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buf_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 18:34:37 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/07 15:29:47 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,17 @@ void				ft_buf_add_c(t_buf *new, char c)
 	new->size++;
 }
 
-void				ft_buf_add_nc(t_buf *new, unsigned long long c)
+void				ft_buf_add_nc(t_buf *new, wchar_t c)
 {
+	int putch;
+
 	if (new->top + 1 + (c <= 127) + (c <= 2047) + (c <= 65535) + (c > 65535)
 			>= 20)
 	{
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;
 	}
-	new->top += ft_putchar(c, new->buf + 1 + new->top);
-	new->size++;
+	putch = ft_putchar(c, new->buf + 1 + new->top);
+	new->top += putch;
+	new->size += putch;
 }
