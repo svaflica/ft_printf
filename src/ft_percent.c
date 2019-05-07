@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 15:33:45 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/07 12:14:15 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 		ft_x_up(list, ap, buf);
 	else if (**str == '%')
 		ft_prcnt(list, buf);
+	else if (**str == 'f')
+		ft_f(list, ap, buf);
 	else if (**str)
 		ft_buf_add_c(buf, **str);
 }
