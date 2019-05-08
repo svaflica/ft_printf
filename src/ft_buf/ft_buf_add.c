@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 13:11:41 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:39:43 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void				ft_buf_add_s(t_buf *new, char *str)
 void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 {
 	int		putch;
-	size_t	len;
+	// size_t	len;
 
-	len = ft_strlen(str);
-	if (new->top + 1 + len >= 20)
+	// len = ft_strlen(str);
+	if (new->top + 1 + n >= 20)
 	{
 		new->size += new->top + 1;
 		ft_print_and_free(new->top, new->buf);
@@ -62,8 +62,8 @@ void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 	}
 	if (n >= 20)
 	{
-		new->size += len;
-		write(1, str, len);
+		new->size += n;
+		write(1, str, n);
 	}
 	else
 		while (*str && n--)
