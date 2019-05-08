@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 13:58:01 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/06 18:34:02 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 11:51:55 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	minus_neg(t_param list, char *i, int tmp, t_buf *buf)
 {
-
 	if (list.width > list.precision && list.width > tmp &&
 	(list.zero == 0 || list.precision > -1))
 		ft_buf_add_s(buf, ft_memnew(list.width - (list.precision > tmp ?
@@ -71,22 +70,26 @@ static void	ft_type_x(t_param list, char *i, t_buf *buf)
 	free(i);
 }
 
-void			ft_x_up(t_param list, va_list ap, t_buf *buf)
+void		ft_x_up(t_param list, va_list ap, t_buf *buf)
 {
 	if (list.length == 0)
 		ft_type_x(list,
-		ft_itoa_base((unsigned)va_arg(ap, unsigned), 16), buf);
+				ft_itoa_base_ll((unsigned)va_arg(ap, unsigned), 16), buf);
 	else if (list.length == 'l')
 		ft_type_x(list,
-		ft_itoa_base((unsigned long)va_arg(ap, unsigned long), 16), buf);
+		ft_itoa_base_ll((unsigned long)va_arg(ap, unsigned long), 16), buf);
 	else if (list.length == 'l' + 'l')
 		ft_type_x(list,
-		ft_itoa_base((unsigned long long)va_arg(ap, unsigned long long), 16),
-		buf);
+		ft_itoa_base_ll((unsigned long long)va_arg(ap, unsigned long long),
+			16), buf);
 	else if (list.length == 'h')
 		ft_type_x(list,
-				ft_itoa_base((unsigned short)va_arg(ap, int), 16), buf);
+				ft_itoa_base_ll((unsigned short)va_arg(ap, int), 16), buf);
 	else if (list.length == 'h' + 'h')
 		ft_type_x(list,
-				ft_itoa_base((unsigned char)va_arg(ap, int), 16), buf);
+				ft_itoa_base_ll((unsigned char)va_arg(ap, int), 16), buf);
+	else if (list.length == 'j')
+		ft_type_x(list, ft_itoa_base_ll((uintmax_t)va_arg(ap, uintmax_t), 16), buf);
+	else if (list.length == 'z')
+		ft_type_x(list, ft_itoa_base_ll((size_t)va_arg(ap, size_t), 16), buf);
 }

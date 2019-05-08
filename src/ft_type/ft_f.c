@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:34:17 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/07 15:43:44 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:35:33 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,4 @@ void			ft_f(t_param list, va_list ap, t_buf *buf)
 	else
 		ft_type_f(list,
 			ft_dota((double)va_arg(ap, double), list.precision), buf);
-
 }

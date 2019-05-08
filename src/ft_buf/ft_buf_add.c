@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buf_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/07 15:29:47 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/08 13:11:41 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void			ft_print_and_free(int top, char *str)
 
 void				ft_buf_add_s(t_buf *new, char *str)
 {
-	size_t len;
+	int		putch;
+	size_t	len;
 
 	len = ft_strlen(str);
 	if (new->top + 1 + len >= 20)
@@ -40,15 +41,17 @@ void				ft_buf_add_s(t_buf *new, char *str)
 	else
 		while (*str)
 		{
-			new->top += ft_putchar(*str, new->buf + 1 + new->top);
-			new->size++;
+			putch = ft_putchar(*str, new->buf + 1 + new->top);
+			new->size += putch;
+			new->top += putch;
 			str++;
 		}
 }
 
 void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 {
-	size_t len;
+	int		putch;
+	size_t	len;
 
 	len = ft_strlen(str);
 	if (new->top + 1 + len >= 20)
@@ -57,7 +60,7 @@ void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;
 	}
-	if (n >= 20/*len >= 20*/)
+	if (n >= 20)
 	{
 		new->size += len;
 		write(1, str, len);
@@ -65,8 +68,9 @@ void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 	else
 		while (*str && n--)
 		{
-			new->top += ft_putchar(*str, new->buf + 1 + new->top);
-			new->size++;
+			putch = ft_putchar(*str, new->buf + 1 + new->top);
+			new->size += putch;
+			new->top += putch;
 			str++;
 		}
 }
@@ -82,7 +86,7 @@ void				ft_buf_add_c(t_buf *new, char c)
 	new->size++;
 }
 
-void				ft_buf_add_nc(t_buf *new, wchar_t c)
+void				ft_buf_add_nc(t_buf *new, unsigned long long c)
 {
 	int putch;
 

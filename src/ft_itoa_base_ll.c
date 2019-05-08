@@ -3,34 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base_ll.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:19:47 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/30 23:34:06 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/08 13:04:48 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-static void		turn_into_char(char *res, unsigned long long n,
+static void		turn_into_char(char *res, uintmax_t/* unsigned long long */ n,
 								int base, int num_d)
 {
 	char	*buf;
-	int		sign;
 
 	buf = "0123456789abcdef";
-	sign = 1;
-	if (n < 0)
-		sign = -1;
 	res[num_d--] = '\0';
 	while (n)
 	{
-		res[num_d--] = buf[(n % base) * sign];
+		res[num_d--] = buf[n % base];
 		n /= base;
 	}
 }
 
-char			*ft_itoa_base_ll(unsigned long long n, int base)
+char			*ft_itoa_base_ll(uintmax_t/* unsigned long long */ n, int base)
 {
 	char	*res;
 	int		num_d;

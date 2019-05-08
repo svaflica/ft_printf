@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/07 15:37:58 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 11:42:22 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		ft_skip_num(char **str)
 
 static void		ft_get_length(char **str, t_param *new)
 {
-	if (**str == 'L' || **str == 'l' || **str == 'h')
+	if (**str == 'L' || **str == 'l' || **str == 'h' || **str == 'j' || **str == 'z')
 	{
 		new->length += **str;
 		*str += 1;

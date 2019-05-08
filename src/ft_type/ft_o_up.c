@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_o.c                                             :+:      :+:    :+:   */
+/*   ft_o_up.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/08 11:55:39 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 12:00:43 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void			prec_neg(char *str, t_param list, t_buf *buf)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.hasht - tmp, ' '));
 	if (list.minus == 0 && list.zero == 1 && list.width - list.hasht > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.hasht - tmp, '0'));
-	list.hasht == 1 && tmp != 0 ? ft_buf_add_c(buf, '0') : NULL;
+	list.hasht == 1 && tmp != '0' ? ft_buf_add_c(buf, '0') : NULL;
 	ft_buf_add_s(buf, str);
 	if (list.minus == 1 && list.width - list.hasht > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.hasht - tmp, ' '));
@@ -58,7 +58,7 @@ static void			prec_pos(char *str, t_param list, t_buf *buf)
 	}
 }
 
-static void			ft_type_o(t_param list, char *i, t_buf *buf)
+static void			ft_type_o_up(t_param list, char *i, t_buf *buf)
 {
 	if (list.precision == -1)
 		prec_neg(i, list, buf);
@@ -67,25 +67,7 @@ static void			ft_type_o(t_param list, char *i, t_buf *buf)
 	free(i);
 }
 
-void				ft_o(t_param list, va_list ap, t_buf *buf)
+void				ft_o_up(t_param list, va_list ap, t_buf *buf)
 {
-	if (list.length == 0)
-		ft_type_o(list,
-				ft_itoa_base_ll((unsigned int)va_arg(ap, int), 8), buf);
-	else if (list.length == 'l')
-		ft_type_o(list,
-				ft_itoa_base_ll((unsigned long)va_arg(ap, int), 8), buf);
-	else if (list.length == 'l' + 'l')
-		ft_type_o(list,
-				ft_itoa_base_ll((unsigned long long)va_arg(ap, int), 8), buf);
-	else if (list.length == 'h')
-		ft_type_o(list,
-				ft_itoa_base_ll((unsigned short)va_arg(ap, int), 8), buf);
-	else if (list.length == 'h' + 'h')
-		ft_type_o(list,
-				ft_itoa_base_ll((unsigned char)va_arg(ap, int), 8), buf);
-	else if (list.length == 'j')
-		ft_type_o(list, ft_itoa_base_ll((uintmax_t)va_arg(ap, uintmax_t), 8), buf);
-	else if (list.length == 'z')
-		ft_type_o(list, ft_itoa_base_ll((size_t)va_arg(ap, size_t), 8), buf);
+	ft_type_o_up(list, ft_itoa_base_ll((unsigned long)va_arg(ap, long int), 8), buf);
 }

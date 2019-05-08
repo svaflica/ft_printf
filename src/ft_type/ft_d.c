@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 18:33:08 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 11:42:21 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 	if (list.plus == 1 && *i != '-')
 		ft_buf_add_c(buf, '+');
 	*i == '-' ? ft_buf_add_c(buf, *i) : 0;
-	// if (list.width > list.precision && list.width > tmp && list.zero == 1)
-	// 	ft_buf_add_s(buf, ft_memnew(list.width - list.space - (list.plus
-	// || *i == '-') - (list.precision > tmp_2 ? list.precision : tmp_2), '0'));
-	// if (list.precision > tmp_2 && list.zero == 0)
 	if (list.precision > tmp_2)
 		ft_buf_add_s(buf, ft_memnew(list.precision - tmp_2, '0'));
 	*i == '-' ? i++ : 0;
@@ -94,7 +90,7 @@ static void	ft_type_d(t_param list, char *i, t_buf *buf)
 	free(i);
 }
 
-void			ft_d(t_param list, va_list ap, t_buf *buf)
+void		ft_d(t_param list, va_list ap, t_buf *buf)
 {
 	if (list.length == 0)
 		ft_type_d(list, ft_itoa_base((int)va_arg(ap, int), 10), buf);
@@ -107,4 +103,8 @@ void			ft_d(t_param list, va_list ap, t_buf *buf)
 		ft_type_d(list, ft_itoa_base((short)va_arg(ap, int), 10), buf);
 	else if (list.length == 'h' + 'h')
 		ft_type_d(list, ft_itoa_base((char)va_arg(ap, int), 10), buf);
+	else if (list.length == 'j')
+		ft_type_d(list, ft_itoa_base((intmax_t)va_arg(ap, intmax_t), 10), buf);
+	else if (list.length == 'z')
+		ft_type_d(list, ft_itoa_base((ssize_t)va_arg(ap, ssize_t), 10), buf);
 }

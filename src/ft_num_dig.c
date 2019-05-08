@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_num_dig.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:53:32 by djeanna           #+#    #+#             */
-/*   Updated: 2019/04/29 17:39:38 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/08 11:53:01 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-int		ft_num_dig(long long n, int base)
+int		ft_num_dig(uintmax_t/* long long */ n, int base)
 {
 	int res;
 

@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/07 15:57:59 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 13:11:26 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 {
-	if (**str == 'c')
+	if (**str == 'C' || (**str == 'c' && list.length == 'l'))
+		ft_c_up(list, (unsigned long long)va_arg(ap, unsigned long long), buf);
+	else if (**str == 'c')
 		ft_c(list, (char)va_arg(ap, int), buf);
-	else if (**str == 'C')
-		ft_c_up(list, (wchar_t)va_arg(ap, unsigned long long), buf);
 	else if (**str == 's' || **str == 'S')
 		ft_s(list, (char *)va_arg(ap, char *), buf);
 	else if (**str == 'o')
 		ft_o(list, ap, buf);
+	else if (**str == 'O')
+		ft_o_up(list, ap, buf);
 	else if (**str == 'p')
 		ft_p(list, va_arg(ap, void *), buf);
 	else if (**str == 'd' || **str == 'i')

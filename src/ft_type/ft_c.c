@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:52:41 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 15:35:46 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 11:59:36 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 void	ft_c(t_param list, char c, t_buf *buf)
 {
-	if (list.minus == 0 && list.zero == 1 && list.width > 1)
-		ft_buf_add_s(buf,
-			ft_memset(ft_strnew(list.width - 1), '0', list.width - 1));
-	else if (list.minus == 0 && list.zero == 0 && list.width > 1)
-		ft_buf_add_s(buf,
-			ft_memset(ft_strnew(list.width - 1), ' ', list.width - 1));
-	ft_buf_add_c(buf, c);
-	if (list.minus == 1 && list.width > 1)
-		ft_buf_add_s(buf,
-			ft_memset(ft_strnew(list.width - 1), ' ', list.width - 1));
+	if (list.length == 'l')
+		ft_c_up(list, c, buf);
+	else
+	{
+		if (list.minus == 0 && list.zero == 1 && list.width > 1)
+			ft_buf_add_s(buf,
+				ft_memset(ft_strnew(list.width - 1), '0', list.width - 1));
+		else if (list.minus == 0 && list.zero == 0 && list.width > 1)
+			ft_buf_add_s(buf,
+				ft_memset(ft_strnew(list.width - 1), ' ', list.width - 1));
+		ft_buf_add_c(buf, c);
+		if (list.minus == 1 && list.width > 1)
+			ft_buf_add_s(buf,
+				ft_memset(ft_strnew(list.width - 1), ' ', list.width - 1));
+	}
 }

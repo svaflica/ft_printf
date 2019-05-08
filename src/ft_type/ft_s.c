@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 12:30:23 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/05 20:23:30 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/08 13:03:44 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	ft_write(t_param list, char *s, t_buf *buf)
 	}
 }
 
-void			ft_s(t_param list, char *s, t_buf *buf)
+void		ft_s(t_param list, char *s, t_buf *buf)
 {
 	int	tmp;
 
