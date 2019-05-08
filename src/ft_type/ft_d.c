@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 11:42:21 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 13:27:25 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	prec_neg(char *i, t_param list, int tmp, t_buf *buf)
 	if (list.space == 1 && *i != '-')
 		ft_buf_add_c(buf, ' ');
 	if (list.minus == 0 && list.zero == 0 && list.width > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
+		ft_buf_add_s(buf, ft_memnew(list.width - tmp - (list.space == 1 && list.plus == 0 && *i != '-'), ' '));
 	list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
 	if (*i == '-')
 	{
@@ -50,7 +50,7 @@ static void	prec_neg(char *i, t_param list, int tmp, t_buf *buf)
 		i++;
 	}
 	if (list.minus == 0 && list.zero == 1 && list.width > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.width - tmp, '0'));
+		ft_buf_add_s(buf, ft_memnew(list.width - tmp - (list.space == 1 && list.plus == 0 && *i != '-'), '0'));
 	ft_buf_add_s(buf, i);
 	if (list.minus == 1 && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
