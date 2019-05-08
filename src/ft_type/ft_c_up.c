@@ -6,13 +6,13 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 15:34:15 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/08 13:12:01 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:29:23 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-void				ft_c_up(t_param list, unsigned long long c, t_buf *buf)
+void				ft_c_up(t_param list, wchar_t c, t_buf *buf)
 {
 	if (list.minus == 0 && list.zero == 1 && list.width > 1)
 		ft_buf_add_s(buf,

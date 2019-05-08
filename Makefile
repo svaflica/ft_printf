@@ -7,7 +7,7 @@ src/ft_type/ft_c.c src/ft_type/ft_o.c src/ft_type/ft_p.c src/ft_buf/ft_buf_add.c
 src/ft_type/ft_s.c src/ft_type/ft_u.c src/ft_type/ft_prcnt.c src/ft_itoa_base_ll.c \
 src/ft_type/ft_d.c src/ft_str/ft_strnew.c src/ft_type/ft_x.c src/ft_type/ft_x_up.c src/ft_buf/ft_do_buf_empty.c \
 src/ft_str/ft_memnew.c src/ft_str/ft_memset.c src/ft_type/ft_c_up.c src/ft_type/ft_f.c src/ft_dota.c \
-src/ft_str/ft_pow.c src/ft_str/ft_strjoin.c src/ft_str/ft_memnew.c src/ft_type/ft_o_up.c
+src/ft_str/ft_pow.c src/ft_str/ft_strjoin.c src/ft_str/ft_memnew.c src/ft_type/ft_o_up.c src/ft_type/ft_s_up.c
 
 OBJ = $(SRC:.c=.o)
 

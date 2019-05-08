@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 13:19:24 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:56:36 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 {
 	if (**str == 'C' || (**str == 'c' && list.length == 'l'))
-		ft_c_up(list, (unsigned long long)va_arg(ap, unsigned long long), buf);
+		ft_c_up(list, (wchar_t)va_arg(ap, wchar_t), buf);
 	else if (**str == 'c')
 		ft_c(list, (char)va_arg(ap, int), buf);
-	else if (**str == 's' || **str == 'S')
+	else if (**str == 'S' || (**str == 's' && list.length == 'l'))
+		ft_s_up(list,(wchar_t *)va_arg(ap, wchar_t *), buf);
+	else if (**str == 's')
 		ft_s(list, (char *)va_arg(ap, char *), buf);
 	else if (**str == 'o')
 		ft_o(list, ap, buf);
@@ -39,7 +41,7 @@ static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 	else if (**str == 'f')
 		ft_f(list, ap, buf);
 	else if (**str)
-		ft_buf_add_c(buf, **str);
+		ft_c(list, **str, buf);
 }
 
 void			ft_percent(va_list ap, char **str, t_param list, t_buf *buf)

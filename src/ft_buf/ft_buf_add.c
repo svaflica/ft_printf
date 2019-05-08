@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 14:39:43 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:29:51 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void				ft_buf_add_c(t_buf *new, char c)
 	new->size++;
 }
 
-void				ft_buf_add_nc(t_buf *new, unsigned long long c)
+void				ft_buf_add_nc(t_buf *new, wchar_t c)
 {
 	int putch;
 

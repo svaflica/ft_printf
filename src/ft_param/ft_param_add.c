@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 11:42:22 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 17:42:42 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,12 @@ static void		ft_get_width(t_param *new, char **str, va_list ap)
 {
 	if (**str == '*')
 	{
-		new->width = (unsigned long long)va_arg(ap, unsigned long long);
+		new->width = (long long)va_arg(ap, long long);
+		if (new->width < 0)
+		{
+			new->width *= -1;
+			new->minus = 1;
+		}
 		*str = *str + 1;
 	}
 	else
@@ -73,6 +78,11 @@ int				ft_param_add(t_param *new, char **str, va_list ap)
 			new->precision = ft_atoi(*str + 1);
 		else if (*(*str + 1) == '-')
 			new->precision = -2;
+		else if (*(*str + 1) == '*')
+		{
+			new->precision = (unsigned long long)va_arg(ap, unsigned long long);
+			*str = *str + 1;
+		}
 		else if (*(*str + 1) == '\0')
 			return (-1);
 		else
@@ -80,11 +90,11 @@ int				ft_param_add(t_param *new, char **str, va_list ap)
 		*str += 1;
 		ft_skip_num(str);
 	}
-	else if (**str == '*')
-	{
-		new->precision = (unsigned long long)va_arg(ap, unsigned long long);
-		*str = *str + 1;
-	}
+	// else if (**str == '*')
+	// {
+	// 	new->precision = (unsigned long long)va_arg(ap, unsigned long long);
+	// 	*str = *str + 1;
+	// }
 	ft_get_length(str, new);
 	return (1);
 }

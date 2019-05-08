@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 12:30:23 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/08 14:46:05 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/08 18:16:30 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,25 @@ static void		prec_pos(t_param list, char *s, int tmp, t_buf *buf)
 {
 	if (list.minus == 0)
 	{
-		if (list.width > (tmp < list.precision ? tmp : list.precision))
-			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision), ' '));
+        if (list.width > (tmp < list.precision ? tmp : list.precision) && list.zero == 1)
+			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), '0'));
+		else if (list.width > (tmp < list.precision ? tmp : list.precision) && s != NULL)
+			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), ' '));
 		if (s != NULL)
 			ft_buf_add_ns(buf, s, tmp < list.precision ? tmp : list.precision);
 		else
-			ft_buf_add_s(buf, "(null)");
+			ft_buf_add_ns(buf, "(null)", list.precision);
 	}
 	else
 	{
 		if (s != NULL)
 			ft_buf_add_ns(buf, s, tmp < list.precision ? tmp : list.precision);
 		else
-			ft_buf_add_s(buf, "(null)");
-		if (list.width > (tmp < list.precision ? tmp : list.precision))
-			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision), ' '));
+			ft_buf_add_ns(buf, "(null)", list.precision);
+        if (list.width > (tmp < list.precision ? tmp : list.precision) && list.zero == 1)
+			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), '0'));
+		else if (list.width > (tmp < list.precision ? tmp : list.precision) && s != NULL)
+			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), ' '));
 	}
 }
 
@@ -38,8 +42,10 @@ static void		prec_neg(t_param list, char *s, int tmp, t_buf *buf)
 {
 	if (list.minus == 0)
 	{
-		if (list.width > tmp)
+		if (list.width > tmp && list.zero == 0 && s != NULL)
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
+		else if (list.width > tmp && list.zero == 1)
+			ft_buf_add_s(buf, ft_memnew(list.width - tmp, '0'));
 		if (s != NULL)
 			ft_buf_add_s(buf, s);
 		else
@@ -51,8 +57,10 @@ static void		prec_neg(t_param list, char *s, int tmp, t_buf *buf)
 			ft_buf_add_s(buf, s);
 		else
 			ft_buf_add_s(buf, "(null)");
-		if (list.width > tmp)
+		if (list.width > tmp && list.zero == 0 && s != NULL)
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
+		else if (list.width > tmp && list.zero == 1)
+			ft_buf_add_s(buf, ft_memnew(list.width - tmp, '0'));
 	}
 }
 
