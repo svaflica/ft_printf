@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 15:38:52 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 13:25:01 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 
 # define MAX_INT 922337203685477580
+# define BUF_SIZE 1000
 
 typedef struct		s_param
 {
@@ -46,8 +47,8 @@ void				ft_param_nul(t_param *param);
 t_buf				*ft_buf_new(t_buf *new);
 void				ft_buf_add_c(t_buf *new, char c);
 void				ft_buf_add_nc(t_buf *new, wchar_t c);
-void				ft_buf_add_s(t_buf *new, char *str);
-void				ft_buf_add_ns(t_buf *new, char *str, size_t n);
+void				ft_buf_add_s(t_buf *new, char *str, int flag);
+void				ft_buf_add_ns(t_buf *new, char *str, size_t n, int flag);
 int					ft_do_buf_empty(t_buf *buf);
 
 int					ft_printf(char *str, ...);

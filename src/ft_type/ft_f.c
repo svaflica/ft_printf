@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:34:17 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/07 16:35:33 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 13:29:00 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		just_print(t_param list, char *i, int tmp, t_buf *buf)
 {
 	list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
-	ft_buf_add_s(buf, i);
+	ft_buf_add_s(buf, i, 0);
 	list.hasht == 1 && list.precision == 0 ? ft_buf_add_c(buf, '.') : 0;
 }
 
@@ -24,11 +24,11 @@ static void		minus_pos(t_param list, char *i, int tmp, t_buf *buf)
 	if (list.space == 1 && list.plus == 0 && *i != '-')
 		ft_buf_add_c(buf, ' ');
 	list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
-	ft_buf_add_s(buf, i);
+	ft_buf_add_s(buf, i, 0);
 	list.hasht == 1 && list.precision == 0 ? ft_buf_add_c(buf, '.') : 0;
 	if (list.width > tmp + (*i != '-' && (list.plus == 1 || list.space == 1)))
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp - (*i != '-' &&
-					(list.plus == 1 || list.space == 1)), ' '));
+					(list.plus == 1 || list.space == 1)), ' '), 0);
 }
 
 static void		minus_neg(t_param list, char *i, int tmp, t_buf *buf)
@@ -38,7 +38,7 @@ static void		minus_neg(t_param list, char *i, int tmp, t_buf *buf)
 		if (list.zero == 0)
 		{
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp - (*i != '-' &&
-			(list.plus == 1 || list.space == 1)), ' '));
+			(list.plus == 1 || list.space == 1)), ' '), 0);
 			((list.space == 1 && *i != '-') || (list.space == 1
 						&& list.plus == 0)) ? ft_buf_add_c(buf, ' ') : 0;
 			list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
@@ -51,9 +51,9 @@ static void		minus_neg(t_param list, char *i, int tmp, t_buf *buf)
 			*i == '-' ? ft_buf_add_c(buf, '-') : 0;
 			*i == '-' ? i++ : 0;
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp -
-						(list.plus || *i == '-') - list.space, '0'));
+						(list.plus || *i == '-') - list.space, '0'), 0);
 		}
-		ft_buf_add_s(buf, i);
+		ft_buf_add_s(buf, i, 0);
 		list.hasht == 1 && list.precision == 0 ? ft_buf_add_c(buf, '.') : 0;
 	}
 	else
@@ -71,7 +71,7 @@ static void		ft_type_f(t_param list, char *i, t_buf *buf)
 		minus_neg(list, i, tmp, buf);
 	if (list.minus == 1)
 		minus_pos(list, i, tmp, buf);
-	free(i);
+	// free(i);
 }
 
 void			ft_f(t_param list, va_list ap, t_buf *buf)
