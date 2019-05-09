@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 13:25:01 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:37:08 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ char				*ft_strjoin(char const *s1, char const *s2);
 void				ft_c_up(t_param list, wchar_t c, t_buf *buf);
 void				ft_c(t_param list, char c, t_buf *buf);
 void				ft_s(t_param list, char *s, t_buf *buf);
-void		      ft_s_up(t_param list, wchar_t *s, t_buf *buf);
+void				ft_s_up(t_param list, wchar_t *s, t_buf *buf);
 void				ft_p(t_param list, void *ptr, t_buf *buf);
 void				ft_d(t_param list, va_list ap, t_buf *buf);
 void				ft_u(t_param list, va_list ap, t_buf *buf);
+void				ft_u_up(t_param list, va_list ap, t_buf *buf);
 void				ft_o(t_param list, va_list ap, t_buf *buf);
 void				ft_o_up(t_param list, va_list ap, t_buf *buf);
 void				ft_x(t_param list, va_list ap, t_buf *buf);

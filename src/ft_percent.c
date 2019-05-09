@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 16:56:36 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:38:16 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 		ft_d(list, ap, buf);
 	else if (**str == 'u')
 		ft_u(list, ap, buf);
+	else if (**str == 'U')
+		ft_u_up(list, ap, buf);
 	else if (**str == 'x')
 		ft_x(list, ap, buf);
 	else if (**str == 'X')
