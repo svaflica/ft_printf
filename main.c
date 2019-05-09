@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 13:52:01 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:47:03 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main (void)
 	// write(1, "\033[38;5;0m", 11);
 	// write(1, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n", 16);
 	// write(1, "\033[0m", 4);
-	printf("{%030S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	ft_printf("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("{%f}{%F}\n", 1.42, 1.42);
+	ft_printf("{%f}{%F}", 1.42, 1.42);
 	
 }
