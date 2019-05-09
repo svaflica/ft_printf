@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 14:45:01 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:58:59 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void				ft_putstr(char const *s);
 int					ft_putnstr(char *str, int size);
 size_t				ft_strlen(const char *s);
 int					ft_print_symb(int c, int size);
-int					ft_num_dig(uintmax_t/* long long */ n, int base);
+int					ft_num_dig(uintmax_t n, int base);
 void				*ft_memset(void *b, int c, size_t len);
 char				*ft_memnew(size_t i, int lett);
 long double			ft_neg_pow(long double n, int pow);
@@ -92,6 +92,6 @@ char				*ft_strchr(const char *s, int c);
 int					ft_atoi(const char *str);
 char				*ft_itoa(long long n);
 char				*ft_itoa_base(long long n, int base);
-char				*ft_itoa_base_ll(uintmax_t/* unsigned long long */ n, int base);
+char				*ft_itoa_base_ll(uintmax_t n, int base);
 
 #endif

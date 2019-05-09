@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 13:46:06 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:07:27 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,10 @@ void				ft_buf_add_s(t_buf *new, char *str, int flag)
 	char	*beg;
 
 	len = ft_strlen(str);
-	if (flag == 0)
-		beg = str;
-	if (*str == '-')
-		str++;
-	if (new->top + 1 + len >= BUF_SIZE)
-	{
-		ft_print_and_free(new->top, new->buf);
-		new->top = -1;
-	}
+	flag == 0 ? beg = str : 0;
+	*str == '-' ? str++ : 0;
+	new->top + 1 + len >= BUF_SIZE ? ft_print_and_free(new->top, new->buf) : 0;
+	new->top + 1 + len >= BUF_SIZE ? new->top = -1 : 0;
 	if (len >= BUF_SIZE)
 	{
 		new->size += len;
@@ -51,25 +46,21 @@ void				ft_buf_add_s(t_buf *new, char *str, int flag)
 			new->top += putch;
 			str++;
 		}
-	if (flag == 0)
-		free(beg);
+	flag == 0 ? free(beg) : 0;
 }
 
 void				ft_buf_add_ns(t_buf *new, char *str, size_t n, int flag)
 {
 	int		putch;
 	char	*beg;
-	// size_t	len;
 
-	// len = ft_strlen(str);
 	if (new->top + 1 + n >= BUF_SIZE)
 	{
 		new->size += new->top + 1;
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;
 	}
-	if (flag == 0)
-		beg = str;
+	flag == 0 ? beg = str : 0;
 	if (n >= BUF_SIZE)
 	{
 		new->size += n;
@@ -83,8 +74,7 @@ void				ft_buf_add_ns(t_buf *new, char *str, size_t n, int flag)
 			new->top += putch;
 			str++;
 		}
-	if (flag == 0)
-		free(beg);
+	flag == 0 ? free(beg) : 0;
 }
 
 void				ft_buf_add_c(t_buf *new, char c)
