@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 10:38:47 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:03:04 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int main (void)
 	// write(1, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n", 16);
 	// write(1, "\033[0m", 4);
 
-	ft_printf("{%3*p}\n", 10, &c);
-	printf("{%3*p}\n", 10, &c);
+	ft_dota(-10.5, 0);
 
 }
