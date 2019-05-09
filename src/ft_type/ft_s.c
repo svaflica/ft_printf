@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 12:30:23 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/08 18:16:30 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 10:31:46 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		prec_pos(t_param list, char *s, int tmp, t_buf *buf)
         if (list.width > (tmp < list.precision ? tmp : list.precision) && list.zero == 1)
 			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), '0'));
 		else if (list.width > (tmp < list.precision ? tmp : list.precision) && s != NULL)
-			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), ' '));
+			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision)/*  - (tmp == 0 ? list.precision : 0) */, ' '));
 		if (s != NULL)
 			ft_buf_add_ns(buf, s, tmp < list.precision ? tmp : list.precision);
 		else
@@ -34,7 +34,7 @@ static void		prec_pos(t_param list, char *s, int tmp, t_buf *buf)
         if (list.width > (tmp < list.precision ? tmp : list.precision) && list.zero == 1)
 			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), '0'));
 		else if (list.width > (tmp < list.precision ? tmp : list.precision) && s != NULL)
-			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision) - (tmp == 0 ? list.precision : 0), ' '));
+			ft_buf_add_s(buf, ft_memnew(list.width - (tmp < list.precision ? tmp : list.precision)/*  - (tmp == 0 ? list.precision : 0) */, ' '));
 	}
 }
 

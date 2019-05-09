@@ -6,13 +6,13 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 15:30:04 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/08 16:41:11 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 10:36:54 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static void print_sym(wchar_t *s, t_buf *buf, size_t size)
+static void		print_sym(wchar_t *s, t_buf *buf, size_t size)
 {
     while (size--)
     {
@@ -53,7 +53,7 @@ static void		prec_neg(t_param list, wchar_t *s, int tmp, t_buf *buf)
 	{
 		if (list.width > tmp && list.zero == 0)
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
-        else if (list.width > tmp)
+		else if (list.width > tmp)
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp, '0'));
 		if (s != NULL)
 			print_sym(s, buf, tmp);
@@ -68,8 +68,8 @@ static void		prec_neg(t_param list, wchar_t *s, int tmp, t_buf *buf)
 			ft_buf_add_s(buf, "(null)");
 		if (list.width > tmp && list.zero == 1)
 			ft_buf_add_s(buf, ft_memnew(list.width - tmp, '0'));
-        else if (list.width > tmp)
-            ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
+		else if (list.width > tmp)
+			ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '));
 	}
 }
 
@@ -84,9 +84,9 @@ static size_t	ft_wstrlen(const wchar_t *s)
 	return (tmp - s);
 }
 
-void       ft_s_up(t_param list, wchar_t *s, t_buf *buf)
+void			ft_s_up(t_param list, wchar_t *s, t_buf *buf)
 {
-    int	tmp;
+	int		tmp;
 
 	tmp = ft_wstrlen(s);
 	if (list.precision > -1)
