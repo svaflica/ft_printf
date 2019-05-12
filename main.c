@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 15:03:04 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/12 14:23:52 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 //gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c ./src/ft_buf/*.c && ./a.out
 int main (void)
 {
-	// // printf("%2s", "str");
-	char c;
-	// char buf[30] = "\033[38;5;0m";
-	// //printf("\033[38;5;153mBoooooooooold greeeeeeeen\033[0mAAAAAAAAA\n");
-	// write(1, "\033[38;5;0m", 11);
-	// write(1, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n", 16);
-	// write(1, "\033[0m", 4);
+	int i;
 
-	ft_dota(-10.5, 0);
+	setlocale(LC_ALL, "ru_RU.UTF-4");
 
+int i = 3018;
+	long double n = 2;
+__int128_t  exp        = (*(__int128_t *)&n & 3018); /* i.e 1023 */
+__int128_t mantissa   = *(__int128_t *)&n & 0xFFFFFFFFFFFFFFFF;
+//printf("%jd\n\n", exp);
+ft_printf("%d\n", 500);
 }

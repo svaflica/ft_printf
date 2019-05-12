@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 15:29:51 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:07:27 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static void			ft_print_and_free(int top, char *str)
 	}
 }
 
-void				ft_buf_add_s(t_buf *new, char *str)
+void				ft_buf_add_s(t_buf *new, char *str, int flag)
 {
 	int		putch;
 	size_t	len;
+	char	*beg;
 
 	len = ft_strlen(str);
-	if (new->top + 1 + len >= 20)
-	{
-		ft_print_and_free(new->top, new->buf);
-		new->top = -1;
-	}
-	if (len >= 20)
+	flag == 0 ? beg = str : 0;
+	*str == '-' ? str++ : 0;
+	new->top + 1 + len >= BUF_SIZE ? ft_print_and_free(new->top, new->buf) : 0;
+	new->top + 1 + len >= BUF_SIZE ? new->top = -1 : 0;
+	if (len >= BUF_SIZE)
 	{
 		new->size += len;
 		write(1, str, len);
@@ -46,21 +46,22 @@ void				ft_buf_add_s(t_buf *new, char *str)
 			new->top += putch;
 			str++;
 		}
+	flag == 0 ? free(beg) : 0;
 }
 
-void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
+void				ft_buf_add_ns(t_buf *new, char *str, size_t n, int flag)
 {
 	int		putch;
-	// size_t	len;
+	char	*beg;
 
-	// len = ft_strlen(str);
-	if (new->top + 1 + n >= 20)
+	if (new->top + 1 + n >= BUF_SIZE)
 	{
 		new->size += new->top + 1;
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;
 	}
-	if (n >= 20)
+	flag == 0 ? beg = str : 0;
+	if (n >= BUF_SIZE)
 	{
 		new->size += n;
 		write(1, str, n);
@@ -73,11 +74,12 @@ void				ft_buf_add_ns(t_buf *new, char *str, size_t n)
 			new->top += putch;
 			str++;
 		}
+	flag == 0 ? free(beg) : 0;
 }
 
 void				ft_buf_add_c(t_buf *new, char c)
 {
-	if (new->top + 1 >= 20)
+	if (new->top + 1 >= BUF_SIZE)
 	{
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;
@@ -91,7 +93,7 @@ void				ft_buf_add_nc(t_buf *new, wchar_t c)
 	int putch;
 
 	if (new->top + 1 + (c <= 127) + (c <= 2047) + (c <= 65535) + (c > 65535)
-			>= 20)
+			>= BUF_SIZE)
 	{
 		ft_print_and_free(new->top, new->buf);
 		new->top = -1;

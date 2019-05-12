@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/06 15:39:56 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:41:18 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int		ft_printf(char *str, ...)
 			str++;
 			ft_percent(ap, &str, list, &buf);
 		}
-		else /* if (*str == '{')
-			ft_detect_color(&str, &buf);
-		else */
+		else
 			ft_buf_add_c(&buf, *str);
 		*str ? str++ : NULL;
 	}

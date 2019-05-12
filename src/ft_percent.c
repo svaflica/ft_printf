@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 16:56:36 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:40:59 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 	else if (**str == 'c')
 		ft_c(list, (char)va_arg(ap, int), buf);
 	else if (**str == 'S' || (**str == 's' && list.length == 'l'))
-		ft_s_up(list,(wchar_t *)va_arg(ap, wchar_t *), buf);
+		ft_s_up(list, (wchar_t *)va_arg(ap, wchar_t *), buf);
 	else if (**str == 's')
 		ft_s(list, (char *)va_arg(ap, char *), buf);
 	else if (**str == 'o')
@@ -30,8 +30,12 @@ static void		ft_type(va_list ap, char **str, t_param list, t_buf *buf)
 		ft_p(list, va_arg(ap, void *), buf);
 	else if (**str == 'd' || **str == 'i')
 		ft_d(list, ap, buf);
+	else if (**str == 'D')
+		ft_d_up(list, ap, buf);
 	else if (**str == 'u')
 		ft_u(list, ap, buf);
+	else if (**str == 'U')
+		ft_u_up(list, ap, buf);
 	else if (**str == 'x')
 		ft_x(list, ap, buf);
 	else if (**str == 'X')

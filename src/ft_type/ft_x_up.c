@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_x_up.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 13:58:01 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/08 11:51:55 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:40:19 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,33 @@ static void	minus_neg(t_param list, char *i, int tmp, t_buf *buf)
 	if (list.width > list.precision && list.width > tmp &&
 	(list.zero == 0 || list.precision > -1))
 		ft_buf_add_s(buf, ft_memnew(list.width - (list.precision > tmp ?
-		list.precision : tmp) - (*i == '0' ? 0 : list.hasht), ' '));
+		list.precision : tmp) - (*i == '0' ? 0 : list.hasht), ' '), 0);
 	if (list.hasht != 0 && *i != '0')
-		ft_buf_add_s(buf, "0X");
+		ft_buf_add_s(buf, "0X", 1);
 	if (list.zero == 1 && list.width > tmp && list.precision == -1)
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp -
-		(*i == '0' ? 0 : list.hasht), '0'));
+		(*i == '0' ? 0 : list.hasht), '0'), 0);
 	if (list.precision > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'));
+		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'), 0);
 	if (list.precision == -1)
-		ft_buf_add_s(buf, i);
+		ft_buf_add_s(buf, i, 0);
 	else if (*i != '0')
-		ft_buf_add_s(buf, i);
+		ft_buf_add_s(buf, i, 0);
 }
 
 static void	minus_pos(t_param list, char *i, int tmp, t_buf *buf)
 {
 	if (list.hasht != 0 && *i != '0')
-		ft_buf_add_s(buf, "0X");
+		ft_buf_add_s(buf, "0X", 1);
 	if (list.precision > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'));
+		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'), 0);
 	if (list.precision == -1)
-		ft_buf_add_s(buf, i);
+		ft_buf_add_s(buf, i, 0);
 	else if (*i != '0')
-		ft_buf_add_s(buf, i);
+		ft_buf_add_s(buf, i, 0);
 	if (list.width > list.precision && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - (list.precision > tmp ?
-		list.precision : tmp) - (*i == '0' ? 0 : list.hasht), ' '));
+		list.precision : tmp) - (*i == '0' ? 0 : list.hasht), ' '), 0);
 }
 
 static void	ft_type_x(t_param list, char *i, t_buf *buf)
@@ -67,7 +67,6 @@ static void	ft_type_x(t_param list, char *i, t_buf *buf)
 		minus_neg(list, i, tmp, buf);
 	else
 		minus_pos(list, i, tmp, buf);
-	free(i);
 }
 
 void		ft_x_up(t_param list, va_list ap, t_buf *buf)
