@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 17:42:42 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/13 11:09:28 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int				ft_param_add(t_param *new, char **str, va_list ap)
 {
 	ft_flags(new, str);
 	ft_get_width(new, str, ap);
+	if (**str == '*' || (**str >= '0' && **str <= '9'))
+		ft_get_width(new, str, ap);
 	if (**str == '.')
 	{
 		if (*(*str + 1) >= '0' && *(*str + 1) <= '9')
