@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/13 11:09:28 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/13 11:52:31 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,8 @@ int				ft_param_add(t_param *new, char **str, va_list ap)
 	// 	*str = *str + 1;
 	// }
 	ft_get_length(str, new);
+	if (**str && (**str == '0' || **str == '+' || **str == '-' ||
+			**str == ' ' || **str == '#'))
+		ft_flags(new, str);
 	return (1);
 }
