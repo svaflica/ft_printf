@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/13 15:07:00 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:21:14 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.space - list.plus -
 				(list.precision > tmp_2 ? list.precision : tmp_2), '0'), 0);
 	if (list.width > list.precision && list.width > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.width - (list.space == 1 || list.plus == 1) -
+		ft_buf_add_s(buf, ft_memnew(list.width - (list.space == 1 || list.plus == 1 || (tmp != tmp_2)) -
 		(list.precision > tmp_2 ? list.precision/*  + (tmp != tmp_2) */ : tmp_2), ' '), 0);
 }
 
