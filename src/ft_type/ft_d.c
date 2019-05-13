@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/13 13:01:54 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/13 15:07:00 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 	*i == '-' ? tmp_2 = tmp - 1 : 0;
 	if (list.space == 1 && *i != '-' && list.plus == 0)
 		ft_buf_add_c(buf, ' ');
+	else
+		list.space = 0;
 	if (list.plus == 1 && *i != '-')
 		ft_buf_add_c(buf, '+');
 	if (*i == '-')
@@ -31,8 +33,8 @@ static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.space - list.plus -
 				(list.precision > tmp_2 ? list.precision : tmp_2), '0'), 0);
 	if (list.width > list.precision && list.width > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.width - list.space - list.plus -
-		(list.precision > tmp_2 ? list.precision + (tmp != tmp_2) : tmp), ' '), 0);
+		ft_buf_add_s(buf, ft_memnew(list.width - (list.space == 1 || list.plus == 1) -
+		(list.precision > tmp_2 ? list.precision/*  + (tmp != tmp_2) */ : tmp_2), ' '), 0);
 }
 
 static void	prec_neg(char *i, t_param list, int tmp, t_buf *buf)
@@ -40,19 +42,18 @@ static void	prec_neg(char *i, t_param list, int tmp, t_buf *buf)
 	list.plus == 1 && *i != '-' ? tmp += 1 : 0;
 	if (list.space == 1 && *i != '-' && list.plus == 0)
 		ft_buf_add_c(buf, ' ');
+	else
+		list.space = 0;
 	if (list.minus == 0 && list.zero == 0 && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp - (list.space == 1 && list.plus == 0 && *i != '-'), ' '), 0);
 	list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
 	if (*i == '-')
-	{
 		ft_buf_add_c(buf, '-');
-		// i++;
-	}
 	if (list.minus == 0 && list.zero == 1 && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp - (list.space == 1 && list.plus == 0 && *i != '-'), '0'), 0);
 	ft_buf_add_s(buf, i, 0);
 	if (list.minus == 1 && list.width > tmp)
-		ft_buf_add_s(buf, ft_memnew(list.width - tmp, ' '), 0);
+		ft_buf_add_s(buf, ft_memnew(list.width - tmp - list.space, ' '), 0);
 }
 
 static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
@@ -61,13 +62,15 @@ static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 
 	tmp_2 = tmp;
 	*i == '-' ? tmp_2 = tmp - 1 : 0;
-	*i == '0' && list.precision == 0 ? tmp -= 1 : 0;
+	*i == '0' && list.precision == 0 ? tmp_2 -= 1 : 0;
 	if (list.space == 1 && list.plus == 0 && *i != '-')
 		ft_buf_add_c(buf, ' ');
+	else
+		list.space = 0;
 	if (list.width > list.precision && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
 		(list.plus || *i == '-') - (list.precision > tmp_2 ? list.precision
-		: tmp - (list.plus || *i == '-')), ' '), 0);
+		: tmp_2/*  - (list.plus || *i == '-') */), ' '), 0);
 	if (list.plus == 1 && *i != '-')
 		ft_buf_add_c(buf, '+');
 	*i == '-' ? ft_buf_add_c(buf, *i) : 0;
