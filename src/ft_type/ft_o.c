@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/14 14:49:09 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/14 14:55:30 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ static void			ft_type_o(t_param list, char *i, t_buf *buf)
 		else
 			prec_pos_null(i, list, buf);
 	}
-	
-
 }
 
 void				ft_o(t_param list, va_list ap, t_buf *buf)
