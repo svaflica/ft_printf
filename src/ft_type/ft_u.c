@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 13:34:25 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/14 15:14:40 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 {
-	if (list.precision > tmp && list.zero == 0)
+	if (list.precision > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'), 0);
 	ft_buf_add_s(buf, i, 0);
 	if (list.width > list.precision && list.width > tmp && list.zero == 1)
@@ -45,20 +45,20 @@ static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 	if (list.width > list.precision && list.width > tmp && list.zero == 1)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
 			(list.precision > tmp ? list.precision : tmp), '0'), 0);
-	if (list.precision > tmp && list.zero == 0)
+	if (list.precision > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'), 0);
 	*i == '0' && list.precision == 0 ? NULL : ft_buf_add_s(buf, i, 0);
 }
 
 static void	ft_type_u(t_param list, char *i, t_buf *buf)
 {
+	list.precision > -1 ? list.zero = 0 : 0;
 	if (list.precision == -1)
 		prec_neg(i, list, ft_strlen(i), buf);
 	else if (list.minus == 0)
 		prec_pos(i, list, ft_strlen(i), buf);
 	else if (list.minus == 1)
 		minus_pos(i, list, ft_strlen(i), buf);
-	// free(i);
 }
 
 void		ft_u(t_param list, va_list ap, t_buf *buf)
