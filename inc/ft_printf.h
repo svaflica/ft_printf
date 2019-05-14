@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 14:58:59 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/14 12:59:50 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void				ft_u(t_param list, va_list ap, t_buf *buf);
 void				ft_u_up(t_param list, va_list ap, t_buf *buf);
 void				ft_o(t_param list, va_list ap, t_buf *buf);
 void				ft_o_up(t_param list, va_list ap, t_buf *buf);
+void				prec_pos_null(char *str, t_param list, t_buf *buf);
+void				prec_neg_null(char *str, t_param list, t_buf *buf);
 void				ft_x(t_param list, va_list ap, t_buf *buf);
 void				ft_prcnt(t_param list, t_buf *buf);
 void				ft_x_up(t_param list, va_list ap, t_buf *buf);
