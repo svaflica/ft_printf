@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/14 12:59:50 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/14 17:37:37 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void				ft_x(t_param list, va_list ap, t_buf *buf);
 void				ft_prcnt(t_param list, t_buf *buf);
 void				ft_x_up(t_param list, va_list ap, t_buf *buf);
 void				ft_x(t_param list, va_list ap, t_buf *buf);
+void				minus_neg_null(t_param list, char *i, int tmp, t_buf *buf);
+void				minus_pos_null(t_param list, char *i, int tmp, t_buf *buf);
 void				ft_f(t_param list, va_list ap, t_buf *buf);
 char				*ft_dota(long double f, int precision);
 

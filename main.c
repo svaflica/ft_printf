@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/14 15:14:51 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/14 18:15:39 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,50 @@ int main (void)
 	// printf("{%03.2d}\n", 2);
 	// ft_printf("{%03.2d}\n", 2);
 
-	printf("%014.12u\n", 1949755190);
-	ft_printf("%014.12u\n", 1949755190);
+	printf("%.4x\n", 42);
+	ft_printf("%.4x\n", 42);
+
+	printf("!%11.2zx!\n", 0);
+	ft_printf("!%11.2zx!\n", 0);
+
+	printf("^.^/%11.2jx^.^/\n", 0);
+	ft_printf("^.^/%11.2jx^.^/\n", 0);
+	
+	printf("!%#049hx!\n", 0);
+	ft_printf("!%#049hx!\n", 0);
+
+	printf("%#017hhx\n", 0);
+	ft_printf("%#017hhx\n", 0);
+	
+	printf("\\!/%0#.35jx\\!/\n", 0);
+	ft_printf("\\!/%0#.35jx\\!/\n", 0);
+
+	printf("%#.1x\n", 0);
+	ft_printf("%#.1x\n", 0);
+
+	printf(">------------<%#2llx>------------<\n", 0);
+	ft_printf(">------------<%#2llx>------------<\n", 0);
+	
+	printf("^.^/%#13.11zx^.^/\n", 0);
+	ft_printf("^.^/%#13.11zx^.^/\n", 0);
+
+	printf("%#016.35hhx\n", 0);
+	ft_printf("%#016.35hhx\n", 0);
+
+	printf("^.^/%016.28jx^.^/\n", 0);
+	ft_printf("^.^/%016.28jx^.^/\n", 0);
+
+	printf("%2llx\n", 0);
+	ft_printf("%2llx\n", 0);
+
+	printf("42%-32jx42\n", 0);
+	ft_printf("42%-32jx42\n", 0);
+
+	printf("%hhx\n", 0);
+	ft_printf("%hhx\n", 0);
+
+	printf("\\!/%#49.48zx\\!/\n", 0);
+	ft_printf("\\!/%#49.48zx\\!/\n", 0);
 	// printf(">------------<%2zo>------------<\n", 0);
 	// ft_printf(">------------<%2zo>------------<\n", 0);
 	
