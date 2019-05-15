@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:53:27 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 15:39:43 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/13 13:11:41 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 
 	tmp_2 = tmp;
 	*i == '-' ? tmp_2 = tmp - 1 : 0;
+	if (list.space == 1 && *i != '-' && list.plus == 0)
+		ft_buf_add_c(buf, ' ');
 	if (list.plus == 1 && *i != '-')
 		ft_buf_add_c(buf, '+');
 	if (*i == '-')
@@ -36,7 +38,7 @@ static void	minus_pos(char *i, t_param list, int tmp, t_buf *buf)
 static void	prec_neg(char *i, t_param list, int tmp, t_buf *buf)
 {
 	list.plus == 1 && *i != '-' ? tmp += 1 : 0;
-	if (list.space == 1 && *i != '-')
+	if (list.space == 1 && *i != '-' && list.plus == 0)
 		ft_buf_add_c(buf, ' ');
 	if (list.minus == 0 && list.zero == 0 && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp - (list.space == 1 && list.plus == 0 && *i != '-'), ' '), 0);
@@ -57,8 +59,7 @@ static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 	tmp_2 = tmp;
 	*i == '-' ? tmp_2 = tmp - 1 : 0;
 	*i == '0' && list.precision == 0 ? tmp -= 1 : 0;
-	if ((list.space == 1 && *i == '-') ||
-		(list.space == 1 && list.plus == 0))
+	if (list.space == 1 && list.plus == 0 && *i != '-')
 		ft_buf_add_c(buf, ' ');
 	if (list.width > list.precision && list.width > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width - list.space -
@@ -74,7 +75,7 @@ static void	prec_pos(char *i, t_param list, int tmp, t_buf *buf)
 
 static void	ft_type_d(t_param list, char *i, t_buf *buf)
 {
-	if (list.precision == -1)
+	if (list.precision <= -1)
 		prec_neg(i, list, ft_strlen(i), buf);
 	else if (list.minus == 0)
 		prec_pos(i, list, ft_strlen(i), buf);
