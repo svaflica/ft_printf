@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/14 17:37:37 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:01:57 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_buf
 	size_t			top;
 
 	size_t			size;
+	int				err;
 }					t_buf;
 
 t_param				*ft_param_new(void);
@@ -50,6 +51,7 @@ void				ft_buf_add_nc(t_buf *new, wchar_t c);
 void				ft_buf_add_s(t_buf *new, char *str, int flag);
 void				ft_buf_add_ns(t_buf *new, char *str, size_t n, int flag);
 int					ft_do_buf_empty(t_buf *buf);
+void				free_buf(t_buf *buf);
 
 int					ft_printf(char *str, ...);
 

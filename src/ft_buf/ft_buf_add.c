@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:42:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/09 15:07:27 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/15 12:06:43 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void				ft_buf_add_nc(t_buf *new, wchar_t c)
 {
 	int putch;
 
-	if (new->top + 1 + (c <= 127) + (c <= 2047) + (c <= 65535) + (c > 65535)
+	if (new->top + 1 + 1 + (c >= 127) + (c >= 2047) + (c >= 65535)
 			>= BUF_SIZE)
 	{
 		ft_print_and_free(new->top, new->buf);
