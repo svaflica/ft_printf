@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 13:58:01 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/14 18:17:10 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 12:10:12 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static void	minus_neg(t_param list, char *i, int tmp, t_buf *buf)
 {
-	if ((list.width - (list.precision > tmp ? list.precision : tmp) - list.hasht) >= 0 && list.zero != 1)
+	if ((list.width - (list.precision > tmp ? list.precision : tmp) -
+											list.hasht) >= 0 && list.zero != 1)
 		ft_buf_add_s(buf, ft_memnew(list.width - (list.precision > tmp ?
 		list.precision : tmp) - list.hasht, ' '), 0);
 	if (list.hasht != 0)
 		ft_buf_add_s(buf, "0x", 1);
-	if ((list.width - (list.precision > tmp ? list.precision : tmp) - list.hasht) >= 0 && list.zero == 1)
+	if ((list.width - (list.precision > tmp ? list.precision : tmp) -
+											list.hasht) >= 0 && list.zero == 1)
 		ft_buf_add_s(buf, ft_memnew(list.width - tmp -
 		list.hasht, '0'), 0);
 	if (list.precision > tmp)
@@ -34,7 +36,8 @@ static void	minus_pos(t_param list, char *i, int tmp, t_buf *buf)
 	if (list.precision > tmp)
 		ft_buf_add_s(buf, ft_memnew(list.precision - tmp, '0'), 0);
 	ft_buf_add_s(buf, i, 0);
-	if ((list.width - (list.precision > tmp ? list.precision : tmp) - list.hasht) >= 0 && list.zero != 1)
+	if ((list.width - (list.precision > tmp ? list.precision : tmp) -
+											list.hasht) >= 0 && list.zero != 1)
 		ft_buf_add_s(buf, ft_memnew(list.width - (list.precision > tmp ?
 		list.precision : tmp) - list.hasht, ' '), 0);
 }
@@ -83,7 +86,9 @@ void		ft_x(t_param list, va_list ap, t_buf *buf)
 		ft_type_x(list,
 				ft_itoa_base_ll((unsigned char)va_arg(ap, int), 16), buf);
 	else if (list.length == 'j')
-		ft_type_x(list, ft_itoa_base_ll((uintmax_t)va_arg(ap, uintmax_t), 16), buf);
+		ft_type_x(list,
+				ft_itoa_base_ll((uintmax_t)va_arg(ap, uintmax_t), 16), buf);
 	else if (list.length == 'z')
-		ft_type_x(list, ft_itoa_base_ll((size_t)va_arg(ap, size_t), 16), buf);
+		ft_type_x(list,
+				ft_itoa_base_ll((size_t)va_arg(ap, size_t), 16), buf);
 }
