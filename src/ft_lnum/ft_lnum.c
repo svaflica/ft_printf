@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 13:04:16 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/15 18:15:33 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 12:02:05 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		ft_lshift(t_lnum *a, int val)
 	a->ar[a->size] = val;
 }
 
-int				MAX(int a, int b)
+int				max(int a, int b)
 {
 	if (a > b)
 		return (a);
@@ -38,7 +38,7 @@ void			ft_lnum_plus(t_lnum *a, t_lnum b)
 
 	i = 0;
 	carry = 0;
-	while (i < MAX(a->size, b.size) + 1 || carry)
+	while (i < max(a->size, b.size) + 1 || carry)
 	{
 		if (i == a->size + 1)
 			ft_lshift(a, 0);

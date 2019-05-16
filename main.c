@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/15 18:24:21 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 15:04:18 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int main (void)
 {
 	// setlocale(LC_ALL, "ru_RU.UTF-4");
 
-	long double f = 1;
-	ft_dota(f, 5);
+	long double f = 0.9;
+	printf("NY: %.Lf\n", f);
+	printf("%s\n", ft_dota(f, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/15 18:15:31 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 13:20:22 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,7 @@
 
 # define MAX_INT 922337203685477580
 # define BUF_SIZE 1000
-# define BASE 1000000000
-
-typedef union				u_double_cast
-{
-	long double				f;
-	struct
-	{
-		unsigned long long	m : 64;
-		int					e : 15;
-		int					s : 1;
-	}						cast;
-}							t_double_cast;
+# define BASE 10
 
 typedef struct				s_param
 {
@@ -66,7 +55,7 @@ int							ft_do_buf_empty(t_buf *buf);
 
 typedef struct				s_lnum
 {
-	int						ar[10];
+	char					ar[100];
 	int						size;
 }							t_lnum;
 
@@ -87,8 +76,8 @@ int							ft_print_symb(int c, int size);
 int							ft_num_dig(uintmax_t n, int base);
 void						*ft_memset(void *b, int c, size_t len);
 char						*ft_memnew(size_t i, int lett);
-long double					ft_neg_pow(long double n, int pow);
-char						*ft_strjoin(char const *s1, char const *s2);
+char						*ft_strjoin(char *s1, char *s2);
+char						*ft_strndup(const char *s1, size_t n);
 
 void						ft_c_up(t_param list, wchar_t c, t_buf *buf);
 void						ft_c(t_param list, char c, t_buf *buf);

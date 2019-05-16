@@ -6,175 +6,128 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 23:36:04 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/15 18:25:43 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 15:03:31 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-static void		ft_print_bits2(__int128_t b, size_t me, size_t size)
+static char		*ft_prec(int shift, unsigned long long m, int prec)
 {
-	if (me < size)
-	{
-		ft_print_bits2(b >> 1, me + 1, size);
-		printf("%d", b & 1);
-	}
-}
-
-static void		ft_print_bits(long double b, size_t size)
-{
-	int j;
-
-	j = 0;
-	__int128_t a = *(__int128_t *)&b;
-	ft_print_bits2(a, 0, size);
-	printf("\n");
-}
-
-static void		ft_print_bits3(__int64_t b, size_t me, size_t size)
-{
-	if (me < size)
-	{
-		ft_print_bits2(b >> 1, me + 1, size);
-		printf("%d", b & 1);
-	}
-}
-
-// void		ft_prec(unsigned long long m, int shift)
-// {
-// 	t_lnum fi;
-// 	t_lnum res;
-
-// 	ft_lnum_new(&fi);
-// 	ft_lnum_new(&res);
-// 	ft_lnum_plus2(&fi, 1);
-// 	while (shift)
-// 	{
-// 		if ((m >> shift--) & 1)
-// 		{
-// 			ft_lnum_plus(&res, fi);
-// 		}
-// 		ft_lnum_mul(&res, 10);
-// 		ft_lnum_mul(&fi, 5);
-// 	}
-// 	printf("\n\n");
-// 	for (int i = res.size; i >= 0; --i)
-// 	{
-// 		printf("%09d ",res.ar[i]);
-// 	}
-// }
-
-static char		*ft_prec(t_double_cast	d, char *main, int shift)
-{
-	t_lnum fi;
-	t_lnum res;
+	t_lnum		fi;
+	t_lnum		res;
+	char		*res_c;
+	char		*tmp;
+	int			tmp_shift;
 
 	ft_lnum_new(&fi);
 	ft_lnum_new(&res);
+	ft_lnum_plus2(&res, 1);
 	ft_lnum_plus2(&fi, 1);
+	tmp_shift = shift;
 	while (shift)
 	{
-		if ((d.cast.m >> shift--) & 1)
+		if ((m >> shift--) & 1)
 			ft_lnum_plus(&res, fi);
 		ft_lnum_mul(&res, 10);
 		ft_lnum_mul(&fi, 5);
 	}
-	printf("\n");
-	for (int i = res.size; i >= 0; --i)
-		printf("%09d ", res.ar[i]);
-	free(main);
+	res_c = NULL;
+	while (--res.size >= 0)
+	{
+		tmp = ft_itoa(res.ar[res.size]);
+		res_c = ft_strjoin(res_c, tmp);
+	}
+	return (res_c);
+}
+
+static int		ft_round2(char **prec_c, int prec, int carry)
+{
+	if (carry == 1)
+		prec--;
+	while (prec >= 0 && carry > 0)
+		if (((*prec_c)[prec--] += carry) > '9')
+		{
+			carry = 1;
+			(*prec_c)[prec + 1] = '0';
+		}
+		else
+			carry = 0;
+	return (carry > 0);
+}
+
+static void		ft_round(char **main, char **prec_c, int prec)
+{
+	int		carry;
+	char	*tmp;
+
+	if ((*prec_c)[prec] >= '5')
+	{
+		if (ft_round2(prec_c, prec, 5))
+			if (ft_round2(main, ft_strlen(*main), 1))
+			{
+				tmp = *main;
+				*main = ft_strjoin("1", tmp);
+				free(tmp);
+			}
+	}
+	else
+	{
+		tmp = *prec_c;
+		*prec_c = ft_strndup(tmp, prec);
+		free(tmp);
+	}
+}
+
+static char		*ft_glue(int s, long long e, unsigned long long m, int prec)
+{
+	int						tmp;
+	char					*tmp_prec;
+	char					*tmp_c;
+	char					*main;
+	char					*prec_c;
+
+	if (e >= 64 || e <= 0)
+		main = ft_itoa(0);
+	else
+		main = ft_itoa(m >> (64 - e));
+	prec_c = ft_prec(64 - e, m, prec);
+	if ((tmp = ft_strlen(prec_c)) > prec)
+		ft_round(&main, &prec_c, prec);
+	else if (tmp < prec)
+	{
+		tmp_c = ft_memnew(prec - tmp, '0');
+		tmp_prec = prec_c;
+		prec_c = ft_strjoin(tmp_prec, tmp_c);
+		free(tmp_prec);
+		free(tmp_c);
+	}
+	if (prec != 0)
+	{
+		if (s == 1)
+		{
+			tmp_c = main;
+			main = ft_strjoin("-", main);
+			free(tmp_c);
+		}
+		tmp_c = main;
+		main = ft_strjoin(main, ".");
+		free(tmp_c);
+		tmp_c = main;
+		main = ft_strjoin(main, prec_c);
+		free(tmp_c);
+	}
+	return (main);
 }
 
 char		*ft_dota(long double f, int precision)
 {
-	// int								s;
-	// int								e;
-	// unsigned long long				m;
-	// unsigned long long				d;
-	// int								shift;
+	int								s;
+	long long						e;
+	unsigned long long				m;
 
-	// s = ((*(__int128_t *)&f) >> 79) & 1;
-	// e = (((*(__int128_t *)&f) >> 64) & 0x7FFF) - 16383 + 1;
-	// m = (*(__int128_t *)&f) & 0xFFFFFFFFFFFFFFFF;
-	// shift = 64 - e;
-	// d = m >> shift;
-
-	// me.f = f;
-	// ft_print_bits(f, 80);
-	// printf("\nsign: ");
-	// ft_print_bits3(s, 0, 1);
-	// printf("\nexpo: %llu    ", e);
-	// ft_print_bits3(e, 0, 15);
-	// printf("\nmant:    ");
-	// ft_print_bits3(m, 0, 64);
-	// printf("\n%d\n\n", d);
-	// ft_prec(m, shift);
-	// printf("\n\nVERY USEFUL LALALALA\n\n");
-
-	int				shift;
-	t_double_cast	d;
-
-	d.cast.e = d.cast.e - 16383 + 1;
-	shift = 64 - d.cast.e;
-	ft_print_bits(d.f, 80);
-	printf("\nsign: ");
-	ft_print_bits3(d.cast.s, 0, 1);
-	printf("\nexpo: %llu    ", d.cast.e);
-	ft_print_bits3(d.cast.e, 0, 15);
-	printf("\nmant:    ");
-	ft_print_bits3(d.cast.m, 0, 64);
-	printf("\n%d\n\n", d);
-	ft_prec(d, ft_itoa_base_ll(d.cast.m >> shift, 10), shift);
-	return (NULL);
+	s = ((*(__int128_t *)&f) >> 79) & 1;
+	e = (((*(__int128_t *)&f) >> 64) & 0x7FFF) - 16383 + 1;
+	m = (*(__int128_t *)&f) & 0xFFFFFFFFFFFFFFFF;
+	return (ft_glue(s, e, m, precision));
 }
-
-
-// static char		*ft_prec(unsigned long long m, char *main, int shift)
-// {
-// 	t_lnum fi;
-// 	t_lnum res;
-
-// 	ft_lnum_new(&fi);
-// 	ft_lnum_new(&res);
-// 	ft_lnum_plus2(&fi, 1);
-// 	while (shift)
-// 	{
-// 		if ((m >> shift--) & 1)
-// 			ft_lnum_plus(&res, fi);
-// 		ft_lnum_mul(&res, 10);
-// 		ft_lnum_mul(&fi, 5);
-// 	}
-// 	printf("\n");
-// 	for (int i = res.size; i >= 0; --i)
-// 	{
-// 		printf("%09d ",res.ar[i]);
-// 	}
-// 	free(main);
-// }
-
-// static char		*ft_glue(t_double_cast d, int prec)
-// {
-// 	int		shift;
-
-// 	shift = 64 - (d.cast.e > 64 ? 0 : d.cast.e);
-// 	return (ft_prec(d.cast.m,
-// 		ft_itoa_base_ll(shift >= 64 ? 0 : d.cast.m >> shift, 10), shift));
-// }
-
-// char		*ft_dota(long double f, int prec)
-// {
-// 	t_double_cast d;
-
-// 	d.f = f;
-// 	d.cast.e = d.cast.e - 16383 + 1;
-
-// 	ft_print_bits(d.f, 80);
-// 	printf("\nsign: ");
-// 	ft_print_bits3(d.cast.s, 0, 1);
-// 	printf("\nexpo: %llu    ", d.cast.e);
-// 	ft_print_bits3(d.cast.e, 0, 15);
-// 	printf("\nmant:    ");
-// 	ft_print_bits3(d.cast.m, 0, 64);
-
-// 	return (ft_glue(d, prec));
-// }
