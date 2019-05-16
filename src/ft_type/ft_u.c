@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:51:07 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/14 15:14:40 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 12:05:01 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void		ft_u(t_param list, va_list ap, t_buf *buf)
 		ft_type_u(list,
 				ft_itoa_base_ll((unsigned char)va_arg(ap, unsigned), 10), buf);
 	else if (list.length == 'j')
-		ft_type_u(list, ft_itoa_base_ll((uintmax_t)va_arg(ap, uintmax_t), 10), buf);
+		ft_type_u(list,
+				ft_itoa_base_ll((uintmax_t)va_arg(ap, uintmax_t), 10), buf);
 	else if (list.length == 'z')
 		ft_type_u(list, ft_itoa_base_ll((size_t)va_arg(ap, size_t), 10), buf);
 }
