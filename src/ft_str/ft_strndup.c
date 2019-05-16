@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 11:59:28 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 12:09:59 by djeanna          ###   ########.fr       */
+/*   Created: 2019/04/04 18:00:07 by ashari            #+#    #+#             */
+/*   Updated: 2019/05/16 12:13:44 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char		*ft_strndup(const char *s1, size_t n)
 {
-	int		len1;
-	int		len2;
-	int		iter;
-	char	*res;
+	char	*new_s1;
+	char	*tmp;
 
-	if (s1 == NULL && s2 == NULL)
+	if (!(new_s1 = (char *)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	if (!(res = (char *)malloc(sizeof(char) * (len1 + len2 + 1))))
-		return (NULL);
-	iter = 0;
-	while (iter < len1)
+	tmp = new_s1;
+	while ((int)n--)
 	{
-		res[iter] = s1[iter];
-		iter++;
+		*new_s1 = *s1;
+		new_s1++;
+		s1++;
 	}
-	while (iter - len1 < len2)
-	{
-		res[iter] = s2[iter - len1];
-		iter++;
-	}
-	res[iter] = '\0';
-	return (res);
+	*new_s1 = '\0';
+	return (tmp);
 }

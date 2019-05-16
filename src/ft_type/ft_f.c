@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:34:17 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/16 12:19:27 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:51:24 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void		just_print(t_param list, char *i, int tmp, t_buf *buf)
 {
 	list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
+	*i == '-' ? ft_buf_add_c(buf, '-') : 0;
 	ft_buf_add_s(buf, i, 0);
 	list.hasht == 1 && list.precision == 0 ? ft_buf_add_c(buf, '.') : 0;
 }
