@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:43:45 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/08 13:06:35 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:57:05 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		*ft_memalloc(size_t size)
 	return (new);
 }
 
-char	*ft_strnew(size_t size)
+char			*ft_strnew(size_t size)
 {
 	return ((char *)ft_memalloc(size + 1));
 }
