@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:52:35 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 11:04:12 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 11:21:34 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void		ft_get_width(t_param *new, char **str, va_list ap)
 	}
 }
 
-static void		ft_prec(t_param *new, char **str, va_list ap)
+static int		ft_prec(t_param *new, char **str, va_list ap)
 {
 	if (*(*str + 1) >= '0' && *(*str + 1) <= '9')
 		new->precision = ft_atoi(*str + 1);
@@ -82,6 +82,7 @@ static void		ft_prec(t_param *new, char **str, va_list ap)
 	*str += 1;
 	while (**str && **str >= '0' && **str <= '9')
 		*str += 1;
+	return (1);
 }
 
 int				ft_param_add(t_param *new, char **str, va_list ap)
@@ -91,7 +92,10 @@ int				ft_param_add(t_param *new, char **str, va_list ap)
 	if (**str == '*' || (**str >= '0' && **str <= '9'))
 		ft_get_width(new, str, ap);
 	if (**str == '.')
-		ft_pec(new, str, ap);
+	{
+		if ((ft_prec(new, str, ap)) == -1)
+			return (-1);
+	}
 	ft_get_length(str, new);
 	if (**str && (**str == '0' || **str == '+' || **str == '-' ||
 			**str == ' ' || **str == '#'))
