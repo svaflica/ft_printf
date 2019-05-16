@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 14:09:26 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/16 11:32:43 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 11:34:13 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void			minus_neg(char *str, t_param list, t_buf *buf, int tmp)
 		ft_buf_add_s(buf, ft_memnew(list.width -
 			(list.precision > tmp ? list.precision : tmp) -
 				(list.hasht == 1 && list.precision <= tmp), ' '), 0);
-
 	if (tmp >= list.precision && list.hasht == 1)
 		ft_buf_add_c(buf, '0');
 	if (list.precision > tmp)
