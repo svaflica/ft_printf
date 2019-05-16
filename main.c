@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 09:23:26 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 15:04:18 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 17:28:40 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,40 @@
 #include <locale.h>
 #include <time.h>
 
-//gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c ./src/ft_buf/*.c && ./a.out
+//gcc main.c ./src/*.c ./src/ft_param/*.c ./src/ft_str/*.c ./src/ft_type/*.c ./src/ft_buf/*.c  src/ft_lnum/*.c && ./a.out
 
-void		ft_print_bits2(__int128_t b, size_t me, size_t size)
+// void		ft_print_bits2(__int128_t b, size_t me, size_t size)
+// {
+// 	if (me < size)
+// 	{
+// 		ft_print_bits2(b >> 1, me + 1, size);
+// 		printf("%d", b & 1);
+// 	}
+// }
+
+// void		ft_print_bits(double b, size_t size)
+// {
+// 	int j;
+
+// 	j = 0;
+// 	__int128_t a = *(__int128_t *)&b;
+// 	ft_print_bits2(a, 0, size);
+// 	printf("\n");
+// }
+
+// int main (void)
+// {
+// 	// setlocale(LC_ALL, "ru_RU.UTF-4");
+
+// 	double f = 3.2;
+
+// 	printf("NY: %#-0 +30.f\n", f);
+// 	ft_printf("NY: %#-0 +30.f\n", f);
+// }
+
+int main(void)
 {
-	if (me < size)
-	{
-		ft_print_bits2(b >> 1, me + 1, size);
-		printf("%d", b & 1);
-	}
-}
-
-void		ft_print_bits(double b, size_t size)
-{
-	int j;
-
-	j = 0;
-	__int128_t a = *(__int128_t *)&b;
-	ft_print_bits2(a, 0, size);
-	printf("\n");
-}
-
-int main (void)
-{
-	// setlocale(LC_ALL, "ru_RU.UTF-4");
-
-	long double f = 0.9;
-	printf("NY: %.Lf\n", f);
-	printf("%s\n", ft_dota(f, 0));
+	double f = 5552.04954;
+	printf("%.100Lf\n\n", f);
+	ft_printf("%.100Lf\n\n", f);
 }

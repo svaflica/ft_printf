@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:34:17 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/09 15:39:43 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 17:29:04 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void		just_print(t_param list, char *i, int tmp, t_buf *buf)
 {
 	list.plus == 1 && *i != '-' ? ft_buf_add_c(buf, '+') : 0;
+	*i == '-' ? ft_buf_add_c(buf, '-') : 0;
 	ft_buf_add_s(buf, i, 0);
 	list.hasht == 1 && list.precision == 0 ? ft_buf_add_c(buf, '.') : 0;
 }
@@ -82,5 +83,5 @@ void			ft_f(t_param list, va_list ap, t_buf *buf)
 			ft_dota((long double)va_arg(ap, long double), list.precision), buf);
 	else
 		ft_type_f(list,
-			ft_dota((double)va_arg(ap, double), list.precision), buf);
+			ft_dota((long double)va_arg(ap, long double), list.precision), buf);
 }

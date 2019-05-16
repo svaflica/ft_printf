@@ -6,7 +6,7 @@
 /*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:39:30 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 13:20:22 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 17:25:43 by djeanna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void						ft_param_nul(t_param *param);
 
 typedef struct				s_buf
 {
-	char					*buf;
 	size_t					top;
-
 	size_t					size;
+	int						err;
+	char					*buf;
 }							t_buf;
 
 t_buf						*ft_buf_new(t_buf *new);
@@ -90,7 +90,13 @@ void						ft_u(t_param list, va_list ap, t_buf *buf);
 void						ft_u_up(t_param list, va_list ap, t_buf *buf);
 void						ft_o(t_param list, va_list ap, t_buf *buf);
 void						ft_o_up(t_param list, va_list ap, t_buf *buf);
+void						prec_neg_null(char *str, t_param list, t_buf *buf);
+void						prec_pos_null(char *str, t_param list, t_buf *buf);
 void						ft_x(t_param list, va_list ap, t_buf *buf);
+void						minus_pos_null(t_param list, char *i, int tmp, t_buf
+								*buf);
+void						minus_neg_null(t_param list, char *i, int tmp, t_buf
+								*buf);
 void						ft_prcnt(t_param list, t_buf *buf);
 void						ft_x_up(t_param list, va_list ap, t_buf *buf);
 void						ft_x(t_param list, va_list ap, t_buf *buf);
