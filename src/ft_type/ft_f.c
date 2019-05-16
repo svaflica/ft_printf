@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:34:17 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/09 13:29:00 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/16 12:19:27 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static void		ft_type_f(t_param list, char *i, t_buf *buf)
 		minus_neg(list, i, tmp, buf);
 	if (list.minus == 1)
 		minus_pos(list, i, tmp, buf);
-	// free(i);
 }
 
 void			ft_f(t_param list, va_list ap, t_buf *buf)
