@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 23:36:04 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 15:38:57 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/20 11:42:27 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,18 @@ static void		ft_round(char **main, char **prec_c, int prec)
 				free(tmp);
 			}
 	}
-	/* else
-	{ */
-		tmp = *prec_c;
-		*prec_c = ft_strndup(tmp, prec);
-		free(tmp);
-/* 	} */
+	tmp = *prec_c;
+	*prec_c = ft_strndup(tmp, prec);
+	free(tmp);
 }
 
 static char		*ft_glue(int s, long long e, unsigned long long m, int prec)
 {
-	int						tmp;
-	char					*tmp_prec;
-	char					*tmp_c;
-	char					*main;
-	char					*prec_c;
+	int			tmp;
+	char		*tmp_prec;
+	char		*tmp_c;
+	char		*main;
+	char		*prec_c;
 
 	if (e >= 64 || e <= 0)
 		main = ft_itoa(0);
@@ -102,30 +99,24 @@ static char		*ft_glue(int s, long long e, unsigned long long m, int prec)
 		free(tmp_prec);
 		free(tmp_c);
 	}
-	if (prec != 0)
-	{
-		if (s == 1)
-		{
-			tmp_c = main;
-			main = ft_strjoin("-", main);
-			free(tmp_c);
-		}
-		tmp_c = main;
-		main = ft_strjoin(main, ".");
-		free(tmp_c);
-		tmp_c = main;
-		main = ft_strjoin(main, prec_c);
-		free(tmp_c);
-	}
+	prec != 0 && s == 1 ? main = un(main, "-") : 0;
+	prec != 0 ? main = un(main, ".") : 0;
+	prec != 0 ? main = un(main, prec_c) : 0;
 	return (main);
 }
 
-char		*ft_dota(long double f, int precision)
+char			*ft_dota(long double f, int precision)
 {
 	int								s;
 	long long						e;
 	unsigned long long				m;
 
+	if (f == 1.0 / 0.0)
+		return (ft_strndup("inf", 3));
+	if (f == -1.0 / 0.0)
+		return (ft_strndup("-inf", 4));
+	if (f != f)
+		return (ft_strndup("nan", 3));
 	s = ((*(__int128_t *)&f) >> 79) & 1;
 	e = (((*(__int128_t *)&f) >> 64) & 0x7FFF) - 16383 + 1;
 	m = (*(__int128_t *)&f) & 0xFFFFFFFFFFFFFFFF;

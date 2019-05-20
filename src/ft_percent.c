@@ -6,7 +6,7 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:53:56 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 15:41:16 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/20 11:52:55 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		ft_type_cont(va_list ap, char **str, t_param list, t_buf *buf)
 	else if (**str == 'f')
 		ft_f(list, ap, buf);
 	else if (**str == 'F')
-		ft_f(list, ap, buf);
+		ft_f_up(list, ap, buf);
 	else if (**str)
 		ft_c(list, **str, buf);
 }

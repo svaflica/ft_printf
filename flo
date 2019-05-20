@@ -1,3 +1,0 @@
-s = ((*(__int128_t *)&f) >> 79) & 1;
-	e = (((*(__int128_t *)&f) >> 64) & 0x7FFF) - 16383 + 1;
-		m = (*(__int128_t *)&f) & 0xFFFFFFFFFFFFFFFF;
