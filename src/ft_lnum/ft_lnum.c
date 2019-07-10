@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lnum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djeanna <djeanna@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 13:04:16 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 12:02:05 by djeanna          ###   ########.fr       */
+/*   Updated: 2019/05/16 17:56:30 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ static void		ft_lshift(t_lnum *a, int val)
 {
 	a->size++;
 	a->ar[a->size] = val;
-}
-
-int				max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
 }
 
 void			ft_lnum_plus(t_lnum *a, t_lnum b)

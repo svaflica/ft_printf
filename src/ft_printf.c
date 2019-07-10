@@ -6,13 +6,25 @@
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 08:41:17 by djeanna           #+#    #+#             */
-/*   Updated: 2019/05/16 15:23:38 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:22:57 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-int		ft_printf(char *str, ...)
+static void		prcnt(va_list ap, char **str, t_param list, t_buf *buf)
+{
+	*str = *str + 1;
+	ft_percent(ap, str, list, buf);
+}
+
+static void		col(char **str, t_buf *buf)
+{
+	*str = ft_detect_col(*str + 1, buf);
+	**str != '}' ? ft_buf_add_c(buf, **str) : NULL;
+}
+
+int				ft_printf(char *str, ...)
 {
 	va_list		ap;
 	t_buf		buf;
@@ -25,10 +37,9 @@ int		ft_printf(char *str, ...)
 	while (*str)
 	{
 		if (*str == '%')
-		{
-			str++;
-			ft_percent(ap, &str, list, &buf);
-		}
+			prcnt(ap, &str, list, &buf);
+		else if (*str == '{')
+			col(&str, &buf);
 		else
 			ft_buf_add_c(&buf, *str);
 		*str ? str++ : NULL;

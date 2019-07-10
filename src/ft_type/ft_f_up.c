@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_f.c                                             :+:      :+:    :+:   */
+/*   ft_f_up.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qclubfoo <qclubfoo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:34:17 by qclubfoo          #+#    #+#             */
-/*   Updated: 2019/05/16 15:51:24 by qclubfoo         ###   ########.fr       */
+/*   Created: 2019/05/20 11:43:08 by qclubfoo          #+#    #+#             */
+/*   Updated: 2019/05/20 11:50:26 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,27 @@ static void		ft_type_f(t_param list, char *i, t_buf *buf)
 		minus_pos(list, i, tmp, buf);
 }
 
-void			ft_f(t_param list, va_list ap, t_buf *buf)
+void			ft_f_up(t_param list, va_list ap, t_buf *buf)
 {
+	char	*num;
+	int		i;
+
+	i = 0;
 	list.precision == -1 ? list.precision = 6 : 0;
 	list.precision == -2 ? list.precision = 0 : 0;
 	if (list.length == 'L')
-		ft_type_f(list,
-			ft_dota((long double)va_arg(ap, long double), list.precision), buf);
+		num = ft_dota((long double)va_arg(ap, long double), list.precision);
 	else
-		ft_type_f(list,
-			ft_dota((double)va_arg(ap, double), list.precision), buf);
+		num = ft_dota((double)va_arg(ap, double), list.precision);
+	if (num[1] >= 'a' && num[1] <= 'z')
+	{
+		if (num[i] == '-')
+			i++;
+		while (num[i])
+		{
+			num[i] -= 32;
+			i++;
+		}
+	}
+	ft_type_f(list, num, buf);
 }
